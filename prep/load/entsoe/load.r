@@ -5,8 +5,8 @@ source('load/entsoe/_shared.r')
 
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
-    # type = 'load', month.start = month.start, month.end = month.end
-    type = 'load', month.start = "2022-08", month.end = month.end, check.updates = FALSE
+    type = 'load', month.start = month.start, month.end = month.end
+    # type = 'load', month.start = "2022-08", month.end = month.end, check.updates = FALSE
 )
 
 # sort(unique(d.base$AreaName))
