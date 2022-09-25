@@ -1,5 +1,7 @@
 # [Energy Monitor (energy.abteil.org)](https://energy.abteil.org)
 
+Joint project by [Johannes Schmidt](https://github.com/joph) and me.
+
 This repository contains the code of a simple energy monitor displaying energy data from:
 - [E-Control](https://www.e-control.at/)
 - [entsoe](https://www.entsoe.eu/)
