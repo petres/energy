@@ -14,7 +14,8 @@ Any contribution is welcome, start by cloning this repo:
 
 ## Data
 
-Copy the `creds-template.json` file to `creds.json` and fill it with your credentials. 
+Copy the `creds-template.json` file to `creds.json` and fill it with your credentials. Credentials can be obtained by registering on the corresponding data supplier webpages (free).
+
 Calling a scripts in the `load` folder will download data from the corresponding data source, extract, aggregate and store the data for the visualisation.
 
 
