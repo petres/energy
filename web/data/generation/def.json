@@ -1,0 +1,104 @@
+{
+    "data": "./data/generation/data.csv",
+    "options": {
+        "height": 350,
+        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
+        "title": "Stromproduktion",
+        "subtitle": "nach Quellen, in TWh",
+        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+    },
+    "mapping": {
+        "x": {
+            "column": "date",
+            "type": "date",
+            "scale": {
+                "type": "time",
+                "orientation": "horizontal",
+                "domainAbs": [-2000000000, 2000000000]
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.017
+                },
+                "label": "Year",
+                "position": "bottom",
+                "format": "%b %y"
+            },
+            "hover": {
+                "format": "%b %y"
+            }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "orientation": "vertical",
+                "domain": [0, null],
+                "domainRel": [0, 0.13]
+            },
+            "stacked": ["source"],
+            "axis": {
+                "ticks": 7,
+                "position": "left",
+                "grid": true,
+                "format": ".2f"
+            },
+            "hover": {
+                "format": ".2f"
+            }
+        },
+        "source": {
+            "column": "source.group",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "rect",
+                        "props": {
+                            "x": 0, "y": 0, "width": 16, "height": 15,
+                            "fill": "@color", "rx": 2
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "common": {
+                    "size": 2
+                },
+                "manual": {
+                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
+                    "Solar":  { "color": "#F3D039", "name": "Solar" },
+                    "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
+                    "Gas":    { "color": "#C3423F", "name": "Erdgas" },
+                    "Waste":  { "color": "#ABD6A9", "name": "Müll" },
+                    "Coal":   { "color": "#8B4513", "name": "Kohle" },
+                    "Oil":    { "color": "#000",    "name": "Erdöl" },
+                    "others": { "color": "#CCC",    "name": "Andere" }
+
+                }
+            },
+            "hover": {
+            }
+        }
+    },
+    "plot": [
+        {
+            "type": "stackedBar",
+            "categories": ["source"],
+            "props": {
+                "fill": "@color",
+                "opacity": 0.9,
+                "x": "@x",
+                "y": "@y",
+                "width": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.017
+                }
+            }
+        }
+    ]
+}

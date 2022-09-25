@@ -1,0 +1,119 @@
+{
+    "data": "./data/storage/data.csv",
+    "options": {
+        "height": 350,
+        "margins": {"top": 40, "right": 30, "bottom": 35, "left": 50},
+        "title": "Speicherfüllstand",
+        "subtitle": "in TWh",
+        "footer": "Source: GIE – Gas Infrastructure Europe"
+    },
+    "mapping": {
+        "x": {
+            "column": "date20",
+            "type": "date",
+            "scale": {
+                "type": "time",
+                "domainAbs": [-0.2, 0.2],
+                "orientation": "horizontal"
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.017
+                },
+                "position": "bottom",
+                "rotate": 0,
+                "format": "%b"
+            },
+            "hover": {
+                "format": "%e. %b"
+            }
+        },
+        "x2": {
+            "column": "day",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domainAbs": [-0.2, 0.2],
+                "range": [0, "@width"]
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.014
+                },
+                "position": "top",
+                "rotate": 0,
+                "padding": 0,
+                "format": "c"
+            }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domain": [0, null],
+                "orientation": "vertical"
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.2f"
+            },
+            "hover": {
+                "format": ",.2f"
+            }
+        },
+        "year": {
+            "column": "year",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "line",
+                        "props": {
+                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
+                            "stroke": "@color", "stroke-width": "@stroke-width",
+                            "opacity": "@opacity"
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "common": {
+                    "stroke-width": 3,
+                    "opacity": 0.7
+                },
+                "manual": {
+                    "2022": { "color": "#C3423F", "opacity": 0.9 },
+                    "2021": { "color": "#BBD7EE" },
+                    "2020": { "color": "#F3D039" },
+                    "2019": { "color": "#ABD6A9" }
+                }
+            },
+            "hover": {
+
+            }
+        }
+    },
+    "plot": [
+        {
+            "type": "svg:path",
+            "categories": ["year"],
+            "props": {
+                "stroke-width": "@stroke-width",
+                "fill": "none",
+                "opacity": "@opacity",
+                "stroke": "@color",
+                "d": {
+                    "x": "@x:scaled",
+                    "y": "@y:scaled"
+                }
+            }
+        }
+    ]
+}

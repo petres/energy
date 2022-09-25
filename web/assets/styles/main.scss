@@ -1,0 +1,93 @@
+body, text {
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    // background-color: #EEE;
+    overflow-y: overlay;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #DDD;
+    h1 {
+        // display: inline;
+        font-size: 25px;
+
+        margin: 5px 20px 0px;
+    }
+    span {
+        font-size: 12px;
+        color: #333;
+        position: relative;
+        top: -2px;
+    }
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #000;
+    padding: 1px 3px;
+    border: 1px solid #000;
+    &:hover {
+        background-color: #FFF;
+        color: #000;
+    }
+}
+
+
+
+.footer {
+    border-top: 1px solid #DDD;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 12px;
+}
+
+.visualisations {
+    margin: 10px;
+    .visEntry {
+         margin: 15px 0 35px;
+         .vis {
+             .subtitle {
+                 margin-top: -1px !important;
+             }
+             .facet-title {
+                 font-weight: 500;
+                 text-align: center;
+             }
+             svg {
+                 g.axis-position-left text{
+                     transform: translate(2px, 0);
+                 }
+             }
+         }
+    }
+
+}
+//
+//
+//
+// .visEntry {
+//     margin: 50px 0;
+//     .visSrc {
+//         font-family: monospace;
+//         color: white;
+//         background: black;
+//         display: inline-block;
+//         padding: 3px;
+//         margin-bottom: 5px;
+//         a {
+//             color: white;
+//         }
+//     }
+//     .genVis {
+//         // border: 1px solid #CCC;
+//     }
+// }

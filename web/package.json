@@ -1,0 +1,33 @@
+{
+  "name": "energy-vis",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --config build/dev.js",
+    "build": "rm -rf dist && webpack --config build/prod.js",
+    "upload": "rsync -arv --delete  dist/ energy.abteil.org:/www/htdocs/w01d48d9/energy.abteil.org/",
+    "deploy": "npm run build && npm run upload"
+  },
+  "author": {
+    "name": "Peter Reschenhofer",
+    "email": "peter.reschenhofer@wifo.ac.at"
+  },
+  "dependencies": {
+    "axios": "^0.27",
+    "copy-webpack-plugin": "^11",
+    "css-loader": "^6",
+    "file-loader": "^6",
+    "html-webpack-plugin": "^5",
+    "mini-css-extract-plugin": "^2",
+    "sass": "^1",
+    "sass-loader": "^13",
+    "style-loader": "^3",
+    "vue": "^3",
+    "vue-loader": "^17",
+    "vue-router": "^4",
+    "webpack": "^5",
+    "webpack-cli": "^4",
+    "webpack-dev-server": "^4"
+  }
+}
