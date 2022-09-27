@@ -24,7 +24,9 @@
             <gen-vis src="./data/generation/def.json"/>
         </div>
         <div class="footer">
-            <span><a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a> {{ version }}</span>
+            <span><a href="mailto:contact@energy.abteil.org" target="_blank">contact@energy.abteil.org</a></span>
+            <span><a href="https://github.com/petres/energy" target="_blank">github</a></span>
+            <span>Vis Library: <a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a> v{{ version }}</span>
         </div>
     </div>
 </template>

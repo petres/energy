@@ -64,6 +64,14 @@ a {
     padding-top: 4px;
     padding-bottom: 4px;
     font-size: 12px;
+    span {
+        padding: 0 10px;
+        border-right: 1px solid #888;
+
+        &:last-child {
+            border: none;
+        }
+    }
 }
 
 .visualisations {
