@@ -50,7 +50,7 @@ g$gie$params = modifyList(g$gie$params, read_json(g$f$creds)$gie)
 
 
 addRollMean = function(d, l) {
-    d[, (paste0('rm', l)) := rollmean(value, l, fill = NA)]
+    d[, (paste0('rm', l)) := rollmean(value, l, fill = NA, align = "right")]
 }
 addCum = function(d) {
     d[, cum := cumsum(value), by=.(year(date))]
