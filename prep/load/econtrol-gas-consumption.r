@@ -6,19 +6,17 @@ source('_shared.r')
 
 # - DOIT -----------------------------------------------------------------------
 # Load
-d.base = as.data.table(fread("https://www.e-control.at/documents/1785851/10140531/gas_dataset_h.csv", skip=11, dec=","))
+d.base = fread("https://www.e-control.at/documents/1785851/10140531/gas_dataset_h.csv", skip=11, dec=",")
 
 # Filter, Aggregate
 d.agg = d.base[, .(
     date = as.Date(Kategorie),
     value = Verwendungskomponenten
-)][, .(value = sum(value)/10^6), by = date][order(date)] 
+)][, .(value = sum(value)/10^6), by = date][order(date)]
 
 # Latest day, i.e. the first day of the new month, contains only 5 h and is therefore wrong.
-d.agg = head(d.agg, -1)
+d.agg = d.agg[1:(nrow(d.agg) - 1), ]
 
-# Latest day, i.e. the first day of the new month, contains only 5 h and is therefore wrong.
-d.agg = head(d.agg, -1)
 
 # Save
 fwrite(d.agg, file.path(g$d$o, 'consumption-gas.csv'))

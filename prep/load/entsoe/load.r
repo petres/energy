@@ -16,7 +16,10 @@ d.agg = d.base[AreaName == "AT CTY", .(
     value = sum(TotalLoadValue)/10^6/4
 ), by = .(date = as.Date(DateTime))][order(date)]
 
-d.base[MapCode == 'AT', .(load = sum(TotalLoadValue)) , by = .(AreaTypeCode, AreaName, MapCode)]
+# Remove latest two days
+d.agg = d.agg[1:(nrow(d.agg) - 2), ]
+
+# d.base[MapCode == 'AT', .(load = sum(TotalLoadValue)) , by = .(AreaTypeCode, AreaName, MapCode)]
 
 
 # Save
