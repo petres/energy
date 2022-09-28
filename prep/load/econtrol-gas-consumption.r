@@ -12,7 +12,10 @@ d.base = as.data.table(fread("https://www.e-control.at/documents/1785851/1014053
 d.agg = d.base[, .(
     date = as.Date(Kategorie),
     value = Verwendungskomponenten
-)][, .(value = sum(value)/10^6), by = date][order(date)]
+)][, .(value = sum(value)/10^6), by = date][order(date)] 
+
+# Latest day, i.e. the first day of the new month, contains only 5 h and is therefore wrong.
+d.agg = head(d.agg, -1)
 
 # Save
 fwrite(d.agg, file.path(g$d$o, 'consumption-gas.csv'))
