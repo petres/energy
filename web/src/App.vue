@@ -18,6 +18,7 @@
 
         <div class="visualisations">
             <gen-vis src="./data/load/def.json"/>
+            <gen-vis src="./data/price-electricity/def.json"/>
             <gen-vis src="./data/consumption-gas/def.json"/>
             <gen-vis src="./data/storage/def.json"/>
             <gen-vis src="./data/generation-gas/def.json"/>
