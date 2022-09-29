@@ -4,8 +4,8 @@
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
         "title": "Strompreis",
-        "subtitle": "täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-        "footer": "Source: Macrobond, EEX - European Energy Exchange"
+        "subtitle": "Spotmarkt, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
+        "footer": "Source: Macrobond (Series: <tt>atelspotbase</tt>), EEX - European Energy Exchange"
     },
     "mapping": {
         "x": {

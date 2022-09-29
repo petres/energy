@@ -47,12 +47,12 @@ a {
     display: inline-block;
     text-decoration: none;
     color: #FFF;
-    background-color: #000;
-    padding: 1px 3px;
-    border: 1px solid #000;
+    background-color: #222;
+    padding: 1px 2px;
+    border: 1px solid #222;
     &:hover {
         background-color: #FFF;
-        color: #000;
+        color: #222;
     }
 }
 
@@ -63,7 +63,7 @@ a {
     text-align: center;
     padding-top: 4px;
     padding-bottom: 4px;
-    font-size: 12px;
+    font-size: 11px;
     span {
         padding: 0 10px;
         border-right: 1px solid #888;
