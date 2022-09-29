@@ -1,0 +1,78 @@
+.modal-window {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.75);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    &:target {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    & > div {
+        width: 80%;
+        max-width: 600px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2em;
+        background: white;
+        border: 1px solid #DDD;
+    }
+    header {
+        font-weight: bold;
+    }
+    h1 {
+        font-size: 150%;
+        margin: 0 0 15px;
+    }
+
+    .modal-close {
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+    }
+}
+
+/* ABOUT */
+#about-modal {
+    font-size: 14px;
+    #about-section {
+        margin-bottom: 40px;
+    }
+    .entry {
+        // height: 100px;
+        margin: 25px 0;
+        font-size: 14px;
+        .name {
+            font-weight: bold;
+        }
+
+        a {
+            height: 100%;
+            display: block;
+            float: right;
+            background: none;
+            border: none;
+
+        }
+
+        &.johannes img.logo {
+            height: 60px;
+        }
+        &.peter img.logo {
+            height: 30px;
+        }
+
+
+    }
+
+}

@@ -28,12 +28,14 @@ module.exports = {
     resolve: {
         alias: {
             '@': resolve('src'),
+            'A': resolve('assets'),
         },
     },
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'data', to: 'data' }
+                { from: 'data', to: 'data' },
+                { from: 'assets/logos', to: 'assets' },
             ]
         }),
         new HtmlWebpackPlugin({

@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="header">
             <h1>Energiedaten für Österreich</h1>
             <span title="last data update" class="updated">{{ updated }}</span>
@@ -25,15 +24,19 @@
             <gen-vis src="./data/generation/def.json"/>
         </div>
         <div class="footer">
+            <span><a href="#about-modal">About/Impressum</a></span>
             <span><a href="mailto:contact@energy.abteil.org" target="_blank">contact@energy.abteil.org</a></span>
             <span><a href="https://github.com/petres/energy" target="_blank">github</a></span>
             <span>Vis Library: <a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a> v{{ version }}</span>
         </div>
+        <about/>
     </div>
 </template>
 
 <script>
 import GenVis from '@/GenVis.vue';
+import About from '@/About.vue';
+
 import axios from 'axios';
 
 const base='https://data-science.wifo.ac.at/gen-vis/gen-vis';
@@ -43,7 +46,7 @@ const version = '0.2.3';
 
 export default {
     components: {
-        GenVis
+        GenVis, About
     },
     data: () => ({
         updated: null,
