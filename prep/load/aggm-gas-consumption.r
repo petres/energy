@@ -63,10 +63,11 @@ d.agg.aggm <- data.table(from, value)[, .(
 
 d.agg.aggm <- d.agg.aggm[, !"from"]
 
-d.agg.aggm[d.agg, on = .(date)] %>%
-    gather(source, value, -date) %>%
-    ggplot(aes(x=date, y=value))+
-    geom_line(aes(col=source))
+#### comparison of two data sources, uses tidyverse
+#d.agg.aggm[d.agg, on = .(date)] %>%
+#    gather(source, value, -date) %>%
+#    ggplot(aes(x=date, y=value))+
+#    geom_line(aes(col=source))
 
 # Save
 fwrite(d.agg.aggm, file.path(g$d$o, 'consumption-gas-aggm.csv'))
