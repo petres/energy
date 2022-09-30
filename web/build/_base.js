@@ -36,6 +36,7 @@ module.exports = {
             patterns: [
                 { from: 'data', to: 'data' },
                 { from: 'assets/logos', to: 'assets' },
+                { from: "assets/.htaccess", to: "" },
             ]
         }),
         new HtmlWebpackPlugin({
