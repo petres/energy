@@ -3,7 +3,7 @@ if (!'librarian' %in% rownames(installed.packages()))  install.packages("librari
 loadPackages = librarian::shelf
 
 loadPackages(
-    'data.table', 'zoo', 'glue', 'lubridate', 'jsonlite'
+    'data.table', 'zoo', 'glue', 'lubridate', 'jsonlite', 'httr', 'xml2'
 )
 
 l = function (..., iL = 0, nL = TRUE)  {
@@ -36,11 +36,14 @@ g = list(
         )
     ), gie = list(
         params = list()
+    ), aggm = list(
+        params = list()
     )
 )
 
 g$entsoe$params = modifyList(g$entsoe$params, read_json(g$f$creds)$entsoe)
 g$gie$params = modifyList(g$gie$params, read_json(g$f$creds)$gie)
+g$aggm$params = modifyList(g$aggm$params, read_json(g$f$creds)$aggm)
 
 # g$entsoe = modifyList(g$entsoe, list(
 #     connString = glue("{g$entsoe$params$protocol}://{g$entsoe$params$server}"),
