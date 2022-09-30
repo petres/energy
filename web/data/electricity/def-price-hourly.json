@@ -1,11 +1,11 @@
 {
-    "data": "./data/load/data-hourly.csv",
+    "data": "./data/electricity/price-hourly.csv",
     "options": {
         "height": 350,
-        "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
-        "title": "Stromkonsum im Tagesverlauf",
-        "subtitle": "in MWh",
-        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
+        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
+        "title": "Strompreis im Tagesverlauf",
+        "subtitle": "nach Quellen, in MWh",
+        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "mapping": {
         "x": {

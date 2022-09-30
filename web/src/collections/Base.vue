@@ -1,7 +1,5 @@
 <template>
     <div class="visualisations">
-        <!-- <gen-vis src="./data/load/def-hourly.json"/>
-        <gen-vis src="./data/generation/def-hourly.json"/> -->
         <gen-vis src="./data/load/def.json"/>
         <gen-vis src="./data/electricity/def-price-daily.json"/>
         <gen-vis src="./data/consumption-gas/def.json"/>

@@ -2,6 +2,7 @@
     <div class="visualisations">
         <gen-vis src="./data/load/def-hourly.json"/>
         <gen-vis src="./data/generation/def-hourly.json"/>
+        <gen-vis src="./data/electricity/def-price-hourly.json"/>
     </div>
 </template>
 
