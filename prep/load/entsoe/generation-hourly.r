@@ -18,7 +18,7 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M", .(
     value = mean(ActualGenerationOutput)/4/10^3
 ), by = .(year = year(DateTime), hour = hour(DateTime), source = ProductionType)][order(year, hour)]
 
-d.agg = d.agg[year >= 2022]
+d.agg = d.agg[year >= 2019]
 
 # Save
 fwrite(d.agg, file.path(g$d$o, 'generation-hourly.csv'))

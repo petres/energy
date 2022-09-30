@@ -10,6 +10,7 @@ Rscript load/gie-storage.r
 
 Rscript load/entsoe/load.r
 Rscript load/entsoe/generation.r
+Rscript load/entsoe/generation-hourly.r
 Rscript load/entsoe/generation-gas.r
 
 cd ..
