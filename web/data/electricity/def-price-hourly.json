@@ -4,8 +4,8 @@
         "height": 350,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
         "title": "Strompreis im Tagesverlauf",
-        "subtitle": "nach Quellen, in MWh",
-        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+        "subtitle": "Spotmarkt, in MWh",
+        "footer": "Source: Macrobond (Series: <tt>atelspot##</tt>), EEX - European Energy Exchange"
     },
     "mapping": {
         "x": {
