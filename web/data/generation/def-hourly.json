@@ -1,20 +1,19 @@
 {
-    "data": "./data/generation/data.csv",
+    "data": "./data/generation/data-hourly.csv",
     "options": {
         "height": 350,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
-        "title": "Stromproduktion",
-        "subtitle": "nach Quellen, in TWh",
+        "title": "Stromproduktion nach Uhrzeit",
+        "subtitle": "nach Quellen, in MWh",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "mapping": {
         "x": {
-            "column": "date",
-            "type": "date",
+            "column": "hour",
+            "type": "numeric",
             "scale": {
-                "type": "time",
-                "orientation": "horizontal",
-                "domainAbs": [-2000000000, 2000000000]
+                "type": "linear",
+                "orientation": "horizontal"
             },
             "axis": {
                 "ticks": {
@@ -24,10 +23,10 @@
                 },
                 "label": "Year",
                 "position": "bottom",
-                "format": "%b %y"
+                "format": "c"
             },
             "hover": {
-                "format": "%b %y"
+                "format": "c"
             }
         },
         "y": {
@@ -95,7 +94,7 @@
                 "width": {
                     "prop": "relative",
                     "ref": "innerWidth",
-                    "ratio": 0.017
+                    "ratio": 0.025
                 }
             }
         }

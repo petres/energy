@@ -6,7 +6,8 @@ source('load/entsoe/_shared.r')
 
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
-    type = 'generation', month.start = month.start, month.end = month.end
+    type = 'generation', month.start = month.start, month.end = month.end,
+    # type = 'generation', month.start = "2022-07", month.end = "2022-08", check.updates = FALSE
 )
 
 # Filter, Aggregate

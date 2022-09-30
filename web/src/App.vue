@@ -14,48 +14,41 @@
             <router-link :to="{ name: 'playground' }">Playground</router-link> -->
         <!-- </div> -->
         <!-- <router-view></router-view> -->
+        <base-collection/>
 
-        <div class="visualisations">
-            <gen-vis src="./data/load/def.json"/>
-            <gen-vis src="./data/price-electricity/def.json"/>
-            <gen-vis src="./data/consumption-gas/def.json"/>
-            <gen-vis src="./data/storage/def.json"/>
-            <gen-vis src="./data/generation-gas/def.json"/>
-            <gen-vis src="./data/generation/def.json"/>
-        </div>
         <div class="footer">
             <span><a href="#about-modal">About/Impressum</a></span>
             <span><a href="mailto:contact@energy.abteil.org" target="_blank">contact@energy.abteil.org</a></span>
             <span><a href="https://github.com/petres/energy" target="_blank">github</a></span>
-            <span>Vis Library: <a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a> v{{ version }}</span>
+            <span>Vis Library: <a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a> v{{ genVis.version }}</span>
         </div>
         <about/>
     </div>
 </template>
 
 <script>
-import GenVis from '@/GenVis.vue';
-import About from '@/About.vue';
-
 import axios from 'axios';
 
-const base='https://data-science.wifo.ac.at/gen-vis/gen-vis';
-// const base='/data/gen-vis/gen-vis';
-const version = '0.2.3';
+import About from '@/About.vue';
+import BaseCollection from '@/collections/Base.vue';
 
+const genVis = {
+    path: 'https://data-science.wifo.ac.at/gen-vis/gen-vis',
+    version: '0.2.3'
+}
 
 export default {
     components: {
-        GenVis, About
+        About, BaseCollection,
     },
     data: () => ({
         updated: null,
-        version: version
+        genVis: genVis,
     }),
     mounted() {
         const self = this;
         let s = document.createElement('script');
-        s.setAttribute('src', `${base}-${version}.js`);
+        s.setAttribute('src', `${genVis.path}-${genVis.version}.js`);
         document.head.appendChild(s);
 
         if (window.mountGenVisByClass) {

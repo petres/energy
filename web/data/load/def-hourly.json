@@ -1,18 +1,18 @@
 {
-    "data": "./data/electricity/price-daily.csv",
+    "data": "./data/load/data-hourly.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
-        "title": "Strompreis",
-        "subtitle": "Spotmarkt, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-        "footer": "Source: Macrobond (Series: <tt>atelspotbase</tt>, <tt>atelspotpeak</tt>), EEX - European Energy Exchange"
+        "title": "Stromkonsum nach Uhrzeit",
+        "subtitle": "in MWh",
+        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
     },
     "mapping": {
         "x": {
-            "column": "date20",
-            "type": "date",
+            "column": "hour",
+            "type": "numeric",
             "scale": {
-                "type": "time",
+                "type": "linear",
                 "domainAbs": [-0.2, 0.2],
                 "orientation": "horizontal"
             },
@@ -24,34 +24,14 @@
                 },
                 "position": "bottom",
                 "rotate": 0,
-                "format": "%b"
+                "format": "c"
             },
             "hover": {
-                "format": "%e. %b"
-            }
-        },
-        "x2": {
-            "column": "day",
-            "type": "numeric",
-            "scale": {
-                "type": "linear",
-                "domainAbs": [-0.2, 0.2],
-                "range": [0, "@width"]
-            },
-            "axis": {
-                "ticks": {
-                    "prop": "relative",
-                    "ref": "innerWidth",
-                    "ratio": 0.014
-                },
-                "position": "top",
-                "rotate": 0,
-                "padding": 0,
                 "format": "c"
             }
         },
         "y": {
-            "column": "rm7",
+            "column": "value",
             "type": "numeric",
             "scale": {
                 "type": "linear",
@@ -67,37 +47,6 @@
             },
             "hover": {
                 "format": ",.3f"
-            }
-        },
-        "type": {
-            "column": "variable",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [{
-                        "type": "line",
-                        "props": {
-                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
-                            "stroke": "#000", "stroke-width": 2,
-                            "stroke-dasharray": "@stroke-dasharray"
-                        }
-                    }]
-                }
-            },
-            "props": {
-                "manual": {
-                    "base": {
-                        "name": "Base"
-                    },
-                    "peak": {
-                        "name": "Peak",
-                        "stroke-dasharray": 5,
-                        "visible": false
-                    }
-                }
-            },
-            "hover": {
-
             }
         },
         "year": {
@@ -135,10 +84,9 @@
     "plot": [
         {
             "type": "svg:path",
-            "categories": ["year", "type"],
+            "categories": ["year"],
             "props": {
                 "stroke-width": "@stroke-width",
-                "stroke-dasharray": "@stroke-dasharray",
                 "fill": "none",
                 "opacity": "@opacity",
                 "stroke": "@color",
