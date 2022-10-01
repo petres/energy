@@ -1,11 +1,11 @@
 {
-    "data": "./data/consumption-gas/data.csv",
+    "data": "./data/consumption-gas/data-aggm.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
         "title": "Gaskonsum",
         "subtitle": "in TWh",
-        "footer": "Source: e-control"
+        "footer": "Source: AGGM"
     },
     "mapping": {
         "x": {

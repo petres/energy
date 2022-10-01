@@ -7,6 +7,7 @@ cd prep
 
 Rscript load/econtrol-gas-consumption.r
 Rscript load/gie-storage.r
+Rscript load/aggm-gas-consumption.r.r
 
 Rscript load/entsoe/load.r
 Rscript load/entsoe/generation.r

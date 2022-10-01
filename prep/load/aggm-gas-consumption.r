@@ -27,7 +27,7 @@ body_get_timeseries <- glue("<request>",
              "</metadata>",
              "<payload>",
              "<timeseriesData>",
-             "<from>2019-01-01T00:00:00Z</from>",
+             "<from>2018-12-01T00:00:00Z</from>",
              "<to>2022-09-27T00:00:00Z</to>",
              "<timeseries>",
              "<name>ErmittelterEKVOst</name>",
@@ -57,11 +57,9 @@ value <- as.numeric(
         xml_find_all(xml_timeseries, "/response/payload/timeseriesData/timeseries/dataSet/data/value")))
 
 d.agg.aggm <- data.table(from, value)[, .(
-    date = as.Date(from),
-    value_aggm =sum(value)/10^9
-    ),by=list(from)][order(from)]
+    value = sum(value)/10^9
+), by=.(date = as.Date(from))][order(date)]
 
-d.agg.aggm <- d.agg.aggm[, !"from"]
 
 #### comparison of two data sources, uses tidyverse
 #d.agg.aggm[d.agg, on = .(date)] %>%
@@ -71,6 +69,8 @@ d.agg.aggm <- d.agg.aggm[, !"from"]
 
 # Save
 fwrite(d.agg.aggm, file.path(g$d$o, 'consumption-gas-aggm.csv'))
+# d.agg.aggm = fread(file.path(g$d$o, 'consumption-gas-aggm.csv'))
+# d.agg.aggm[, date := as.Date(date)]
 
 # Plot, Preparation
 addRollMean(d.agg.aggm, 7)
@@ -79,4 +79,4 @@ d.plot = meltAndRemove(d.agg.aggm)
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'consumption-gas-aggm', 'data.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'consumption-gas', 'data-aggm.csv'))
