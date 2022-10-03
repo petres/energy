@@ -15,6 +15,9 @@ addCum(d.hdd)
 d.plot = meltAndRemove(d.hdd)
 dates2PlotDates(d.plot)
 
+fwrite(d.plot, file.path(g$d$wd, 'consumption-gas', 'data-econtrol.csv'))
+
+
 ####test using ggplot
 #d.plot %>%
 #    filter(year>2018) %>%
