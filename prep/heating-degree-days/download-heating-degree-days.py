@@ -7,7 +7,7 @@ import glob
 
 c = cdsapi.Client()
 
-PATH_ERA5 = 'prep/data/climate/'
+PATH_ERA5 = 'data/climate/'
 
 if not os.path.isdir(Path(PATH_ERA5)):
     raise RuntimeError(f"Wrong path to ERA5 data: PATH_ERA5 = {PATH_ERA5}")
@@ -118,7 +118,7 @@ if os.path.exists(current_file):
 
 download_era5_temperature_last_year(year, month, day, 'reanalysis-era5-single-levels')
 
-pop = xr.open_dataarray('prep/data/population/pop_era5_rel.nc')
+pop = xr.open_dataarray('data/population/pop_era5_rel.nc')
 file = f'{PATH_ERA5}/*.nc'
 
 temperature = xr.open_mfdataset(file)
@@ -128,6 +128,6 @@ temperature = temperature.where(temperature<=12, 20)
 temperature = 20 - temperature
 temperature = (temperature * pop).sum(['longitude','latitude'])
 
-temperature.to_pandas().max(axis=1).to_csv("prep/data/output/heating-degree-days.csv")
+temperature.to_pandas().max(axis=1).to_csv("data/output/heating-degree-days.csv")
 
 
