@@ -103,7 +103,7 @@ if day < 6:
     else:
         month = month - 1
 
-current_file = f'{PATH_ERA5}/{year}.nc'
+current_file = f'{PATH_ERA5}/last_year.nc'
 
 if os.path.exists(current_file):
     os.remove(current_file)
