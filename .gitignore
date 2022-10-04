@@ -1,13 +1,6 @@
 update.log
-prep/data/population/gpw_v4_population_density_rev11_2020_30_sec.tif
-prep/data/population/shape-file-austria/AUT_adm0-fgdc.xml
-prep/data/population/shape-file-austria/AUT_adm0-iso19110.xml
-prep/data/population/shape-file-austria/AUT_adm0-iso19139.xml
-prep/data/population/shape-file-austria/AUT_adm0.cpg
-prep/data/population/shape-file-austria/AUT_adm0.csv
-prep/data/population/shape-file-austria/AUT_adm0.dbf
-prep/data/population/shape-file-austria/AUT_adm0.prj
-prep/data/population/shape-file-austria/AUT_adm0.shp
-prep/data/population/shape-file-austria/AUT_adm0.shp.xml
-prep/data/population/shape-file-austria/AUT_adm0.shx
 .Rproj.user
+
+prep/data/climate/*
+prep/heating-degree-days/prepare-population-weights-austria.py
+

@@ -15,7 +15,7 @@ addCum(d.hdd)
 d.plot = meltAndRemove(d.hdd)
 dates2PlotDates(d.plot)
 
-fwrite(d.plot, file.path(g$d$wd, 'consumption-gas', 'data-econtrol.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'heating-degree-days', 'hdd.csv'))
 
 
 ####test using ggplot
