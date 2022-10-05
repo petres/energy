@@ -10,7 +10,7 @@ Following data sources are used:
 - [AGGM - Austrian Gas Grid Managment AG](https://www.aggm.at/)
 - [EEX - European Energy Exchange](https://www.eex.com/) via [Macrobond](https://www.macrobond.com/)
 
-This repository contains the data preparation code as well as the frontemd code.
+This repository contains the data preparation code as well as the web frontend code.
 
 ## Contribute
 
@@ -27,7 +27,7 @@ Calling one of the scripts in the `load` folder will download the data from the 
 
 ## Web
 
-The website is uses [webpack](https://webpack.js.org/) as bundler and the javascript framework [Vue.js](https://vuejs.org/). 
+The website uses [webpack](https://webpack.js.org/) as bundler and the javascript framework [Vue.js](https://vuejs.org/). 
 The visualisations are created by the [gen-vis](https://github.com/petres/gen-vis) library which is build on top of [Vue.js](https://vuejs.org) and [d3](https://d3js.org/).
 
 To run the monitor website locally in dev mode:
