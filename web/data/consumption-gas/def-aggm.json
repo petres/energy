@@ -5,7 +5,7 @@
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
         "title": "Gaskonsum",
         "subtitle": "in TWh",
-        "footer": "Source: AGGM"
+        "footer": "Source: AGGM - Austrian Gas Grid Management"
     },
     "mapping": {
         "x": {
