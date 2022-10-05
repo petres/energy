@@ -15,16 +15,22 @@ d.base[, .(sum = sum(ActualGenerationOutput)), by=.(ProductionType)][order(sum)]
 # Filter, Aggregate
 # unique(d.base$ProductionType)
 d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M", .(
-    value = sum(ActualGenerationOutput)/4/10^6
+    value = sum(ActualGenerationOutput)/4/10^3
 ), by = .(date = as.Date(DateTime), source = ProductionType)][order(date)]
 
 # Save
 fwrite(d.agg, file.path(g$d$o, 'generation-facets.csv'))
-# d.agg = fread(file.path(g$d$o, 'generation-facets.csv'))
-# d.agg$date = as.Date(d.agg$date)
+if (FALSE) {
+    d.agg = fread(file.path(g$d$o, 'generation-facets.csv'))
+    d.agg[, `:=`(
+        date = as.Date(d.agg$date),
+        value = value*1000
+    )]
+}
+
 
 # Delete last (most probably incomplete) obs
-d.agg = d.agg[1:(nrow(d.agg) - 2), ]
+d.agg = removeLastDays(d.agg, 2)
 
 # Group
 nameOthers = "others"
@@ -40,7 +46,7 @@ c.order = c(c.order[c.order != nameOthers], nameOthers)
 d.agg.group[, source.group := factor(source.group, c.order, c.order)]
 d.plot = d.agg.group[order(date, source.group)]
 
-addRollMean(d.plot, 14)
+addRollMean(d.plot, 28, g="source.group")
 dates2PlotDates(d.plot)
 
 

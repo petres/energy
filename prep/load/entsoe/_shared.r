@@ -15,8 +15,8 @@ c.sourceGroups1 = list(
     "Solar"   = c("Solar"),
     "Nuclear" = c("Nuclear"),
     "Coal"    = c("Fossil Brown coal/Lignite", "Fossil Hard coal", "Fossil Coal-derived gas", "Fossil Peat"),
-    "Oil"     = c("Fossil Oil", "Fossil Oil shale"),
-    "Waste"   = c("Waste")
+    "Oil"     = c("Fossil Oil", "Fossil Oil shale")
+    # "Waste"   = c("Waste")
 )
 
 c.sourceGroups2 = list(
@@ -25,7 +25,7 @@ c.sourceGroups2 = list(
         "Biomass", "Geothermal", "Other renewable", "Marine"
     ),
     "Nuclear" = c(c.sourceGroups1$Nuclear),
-    "Non-Renewable" = c(c.sourceGroups1$Oil, c.sourceGroups1$Coal, c.sourceGroups1$Waste, c.sourceGroups1$Gas)
+    "Non-Renewable" = c(c.sourceGroups1$Oil, c.sourceGroups1$Coal, "Waste", c.sourceGroups1$Gas)
 )
 
 addGroupCol = function(d, mapping, sourceCol = "source", groupCol = "source.group", nameOthers = 'others') {

@@ -24,9 +24,6 @@ d.agg = d.agg[year >= 2019]
 fwrite(d.agg, file.path(g$d$o, 'generation-hourly.csv'))
 # d.agg = fread(file.path(g$d$o, 'generation.csv'))
 
-# Delete last (most probably incomplete) obs
-d.agg = d.agg[1:(nrow(d.agg) - 2), ]
-
 # Group
 nameOthers = "others"
 addGroupCol(d.agg, c.sourceGroups1, nameOthers = nameOthers)

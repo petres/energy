@@ -4,7 +4,7 @@
         "height": 200,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
         "title": "Stromproduktion",
-        "subtitle": "nach Quellen, täglich (rollierender 7-Tages Durchschnitt), in TWh",
+        "subtitle": "nach Quellen, Durchschnitt letzter vier Wochen, in MWh",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "mapping": {
@@ -31,7 +31,7 @@
             }
         },
         "y": {
-            "column": "value",
+            "column": "rm28",
             "type": "numeric",
             "scale": {
                 "type": "linear",
@@ -43,7 +43,7 @@
                 "ticks": 4,
                 "position": "left",
                 "grid": true,
-                "format": ".2f"
+                "format": ".1f"
             },
             "hover": {
                 "format": ".2f"
@@ -60,7 +60,6 @@
                     "Solar":  { "color": "#F3D039", "name": "Solar" },
                     "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
                     "Gas":    { "color": "#C3423F", "name": "Erdgas" },
-                    "Waste":  { "color": "#ABD6A9", "name": "Müll" },
                     "Coal":   { "color": "#8B4513", "name": "Kohle" },
                     "others": { "color": "#888",    "name": "Andere" }
                 }

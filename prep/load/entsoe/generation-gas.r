@@ -20,7 +20,7 @@ fwrite(d.agg, file.path(g$d$o, 'generation-gas.csv'))
 # d.agg = loadData(file.path(g$d$o, 'generation-gas.csv'))
 
 # Delete last (most probably incomplete) obs
-d.agg = d.agg[1:(nrow(d.agg) - 2), ]
+d.agg = removeLastDays(d.agg, 2)
 
 # Plot, Preparation
 addRollMean(d.agg, 7)
