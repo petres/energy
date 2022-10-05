@@ -12,7 +12,8 @@ loadGieData = function(date = Sys.Date(), page = 1) {
     l(glue('page: {page}'))
     url = glue("https://agsi.gie.eu/api?country=AT&from=2018-12-01&to={date}&size=300&page={page}")
     t = getURL(url, httpheader = c("x-key" = g$gie$params$key))
-    t = sub('<a href="/historical/eu">EU</a> > AT', '', t, fixed = TRUE)
+    # NO VALID JSON, HOW THEY ARE ABLE TO PRODUCE SOMETHING LIKE THAT
+    t = sub('<a href="/data-overview/eu">EU</a> > AT', '', t, fixed = TRUE)
     fromJSON(t)
 }
 
