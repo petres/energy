@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
 
+# - WRITE TIME -----------------------------------------------------------------
 echo `date -Iseconds` > web/data/update.txt
 
-# Update
+
+# - UPDATE DATA ----------------------------------------------------------------
 cd prep
 
-python3 heating-degree-days/download-heating-degree-days.py
-
-Rscript load/econtrol-gas-consumption.r
-Rscript load/gie-storage.r
-Rscript load/aggm-gas-consumption.r.r
+# - HEATING DAYS
+# python3 heating-degree-days/download-heating-degree-days.py
 # Rscript heating-degree-days/prepare-heating-degree-days.R
-Rscript load/aggm-gas-consumption.r
 
+# - GAS
+# Obsolete, gas consumption is now obtained from AGGM 
+# Rscript load/econtrol-gas-consumption.r
+Rscript load/aggm-gas-consumption.r.r
+Rscript load/gie-storage.r
+
+# - ELECTRICITY 
 Rscript load/entsoe/load.r
 Rscript load/entsoe/generation.r
 Rscript load/entsoe/generation-hourly.r
@@ -20,9 +25,8 @@ Rscript load/entsoe/generation-gas.r
 
 cd ..
 
-# Upload
+
+# - UPLOAD DATA ----------------------------------------------------------------
 cd web
-
 ./sync-data.sh
-
 cd ..
