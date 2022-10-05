@@ -17,12 +17,16 @@ dates2PlotDates(d.plot)
 
 fwrite(d.plot, file.path(g$d$wd, 'heating-degree-days', 'hdd.csv'))
 
+# d.plot = fread(file.path(g$d$wd, 'heating-degree-days', 'hdd.csv'))
+# d.hdd = d.plot[variable == 'value', .(date, value)]
+
 
 ####test using ggplot
-#d.plot %>%
-#    filter(year>2018) %>%
-#    ggplot(aes(x=day, y=value)) +
-#    geom_line(aes(col=as.character(year))) +
-#    facet_wrap(.~variable,scale="free")
+loadPackages(tidyverse)
+d.plot %>%
+   filter(year>2018) %>%
+   ggplot(aes(x=day, y=value)) +
+   geom_line(aes(col=as.character(year))) +
+   facet_wrap(.~variable,scale="free")
 
 

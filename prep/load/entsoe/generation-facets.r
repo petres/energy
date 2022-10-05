@@ -6,23 +6,22 @@ source('load/entsoe/_shared.r')
 
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
-    type = 'generation', month.start = "2022-07", month.end = "2022-07", check.updates = FALSE
-    # type = 'generation', month.start = month.start, month.end = month.end
+    # type = 'generation', month.start = "2022-07", month.end = "2022-07"
+    type = 'generation', month.start = month.start, month.end = month.end
 )
 
-# d.base[, .(sum = sum(ActualGenerationOutput)), by=.(ProductionType)][order(sum)]
+d.base[, .(sum = sum(ActualGenerationOutput)), by=.(ProductionType)][order(sum)]
 
 # Filter, Aggregate
 # unique(d.base$ProductionType)
 d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M", .(
-    value = mean(ActualGenerationOutput)/4/10^3
-), by = .(year = year(DateTime), hour = hour(DateTime), source = ProductionType)][order(year, hour)]
-
-d.agg = d.agg[year >= 2019]
+    value = sum(ActualGenerationOutput)/4/10^6
+), by = .(date = as.Date(DateTime), source = ProductionType)][order(date)]
 
 # Save
-fwrite(d.agg, file.path(g$d$o, 'generation-hourly.csv'))
-# d.agg = fread(file.path(g$d$o, 'generation.csv'))
+fwrite(d.agg, file.path(g$d$o, 'generation-facets.csv'))
+# d.agg = fread(file.path(g$d$o, 'generation-facets.csv'))
+# d.agg$date = as.Date(d.agg$date)
 
 # Delete last (most probably incomplete) obs
 d.agg = d.agg[1:(nrow(d.agg) - 2), ]
@@ -31,7 +30,7 @@ d.agg = d.agg[1:(nrow(d.agg) - 2), ]
 nameOthers = "others"
 addGroupCol(d.agg, c.sourceGroups1, nameOthers = nameOthers)
 # Agg
-d.agg.group = d.agg[, .(value = sum(value)), by=.(year, hour, source.group)]
+d.agg.group = d.agg[, .(value = sum(value)), by=.(date, source.group)]
 
 
 # Plot
@@ -39,6 +38,10 @@ c.order = d.agg.group[, .(value = sum(value)), by=source.group][order(-value)]$s
 c.order = c(c.order[c.order != nameOthers], nameOthers)
 
 d.agg.group[, source.group := factor(source.group, c.order, c.order)]
-d.agg.group = d.agg.group[order(year, hour, source.group)]
+d.plot = d.agg.group[order(date, source.group)]
 
-fwrite(d.agg.group, file.path(g$d$wd, 'generation', 'data-hourly.csv'))
+addRollMean(d.plot, 14)
+dates2PlotDates(d.plot)
+
+
+fwrite(d.plot, file.path(g$d$wd, 'generation', 'data-facets.csv'))

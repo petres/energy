@@ -19,6 +19,9 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M" & ProductionType
 fwrite(d.agg, file.path(g$d$o, 'generation-gas.csv'))
 # d.agg = loadData(file.path(g$d$o, 'generation-gas.csv'))
 
+# Delete last (most probably incomplete) obs
+d.agg = d.agg[1:(nrow(d.agg) - 2), ]
+
 # Plot, Preparation
 addRollMean(d.agg, 7)
 addCum(d.agg)
