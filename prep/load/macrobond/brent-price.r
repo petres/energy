@@ -5,13 +5,17 @@ source('load/macrobond/_shared.r')
 
 
 # - DOIT -----------------------------------------------------------------------
+
+# Title	Source	Frequency	Start date	Name
+# Crude Oil, Future, ICE Brent Crude, 1st Position, Close, USD	Intercontinental Exchange (ICE)	Daily	23.06.1988	b_c1_cl
+
+
 c.series = c(
-    atelspotbase = "base",
-    atelspotpeak = "peak"
+    b_c1_cl = "price"
 )
 
 d.plot = getPrepMacrobondData(c.series)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'electricity', 'price-daily.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'others', 'brent-daily.csv'))
 
