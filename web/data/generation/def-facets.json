@@ -1,11 +1,11 @@
 {
-    "data": "./data/consumption-gas/data-aggm.csv",
+    "data": "./data/generation/data-facets.csv",
     "options": {
-        "height": 350,
-        "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
-        "title": "Gaskonsum",
-        "subtitle": "in TWh",
-        "footer": "Source: AGGM - Austrian Gas Grid Management"
+        "height": 200,
+        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
+        "title": "Stromproduktion",
+        "subtitle": "nach Quellen, Durchschnitt letzter vier Wochen, in MWh",
+        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "mapping": {
         "x": {
@@ -30,57 +30,41 @@
                 "format": "%e. %b"
             }
         },
-        "x2": {
-            "column": "day",
-            "type": "numeric",
-            "scale": {
-                "type": "linear",
-                "domainAbs": [-0.2, 0.2],
-                "range": [0, "@width"]
-            },
-            "axis": {
-                "ticks": {
-                    "prop": "relative",
-                    "ref": "innerWidth",
-                    "ratio": 0.014
-                },
-                "position": "top",
-                "rotate": 0,
-                "padding": 0,
-                "format": "c"
-            }
-        },
         "y": {
-            "column": "value",
+            "column": "rm28",
             "type": "numeric",
             "scale": {
                 "type": "linear",
+                "orientation": "vertical",
                 "domain": [0, null],
-                "domainRel": [0, 0.1],
-                "orientation": "vertical"
+                "domainRel": [0, 0.15]
             },
             "axis": {
-                "ticks": 6,
+                "ticks": 4,
                 "position": "left",
                 "grid": true,
-                "format": ",.2f"
+                "format": ".1f"
             },
             "hover": {
-                "format": ",.3f"
+                "format": ".2f"
             }
         },
-        "type": {
-            "column": "variable",
+        "source": {
+            "column": "source.group",
             "props": {
+                "common": {
+                    "size": 2
+                },
                 "manual": {
-                    "rm7": {
-                        "name": "täglich (rollierender 7-Tages Durchschnitt)"
-                    },
-                    "cum": {
-                        "stroke-width": 3,
-                        "name": "kumuliert"
-                    }
+                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
+                    "Solar":  { "color": "#F3D039", "name": "Solar" },
+                    "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
+                    "Gas":    { "color": "#C3423F", "name": "Erdgas" },
+                    "Coal":   { "color": "#8B4513", "name": "Kohle" },
+                    "others": { "color": "#888",    "name": "Andere" }
                 }
+            },
+            "hover": {
             }
         },
         "year": {
@@ -116,21 +100,21 @@
         }
     },
     "facets": {
-        "dim": ["type"],
-        "scales": [],
+        "dim": ["source"],
+        "scales": ["x"],
         "cols": {
             "prop": "steps",
             "ref": "totalWidth",
             "steps": [
-                {"cut":   0, "value": 1},
-                {"cut": 850, "value": 2}
+                {"cut":   0, "value": 2},
+                {"cut": 850, "value": 3}
             ]
         }
     },
     "plot": [
         {
             "type": "svg:path",
-            "categories": ["year", "type"],
+            "categories": ["source", "year"],
             "props": {
                 "stroke-width": "@stroke-width",
                 "fill": "none",

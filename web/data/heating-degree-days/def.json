@@ -1,11 +1,10 @@
 {
-    "data": "./data/consumption-gas/data-aggm.csv",
+    "data": "./data/heating-degree-days/hdd.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
-        "title": "Gaskonsum",
-        "subtitle": "in TWh",
-        "footer": "Source: AGGM - Austrian Gas Grid Management"
+        "title": "Heizgradtage",
+        "footer": "Source: Regionale Temperaturen von ERA5, gewichtet mit Bevölkerung für Österreich. Raumtemperatur 20 °C, Heizgrenze 12 °C"
     },
     "mapping": {
         "x": {
@@ -63,22 +62,22 @@
                 "ticks": 6,
                 "position": "left",
                 "grid": true,
-                "format": ",.2f"
+                "format": ",.0f"
             },
             "hover": {
-                "format": ",.3f"
+                "format": ",.1f"
             }
         },
         "type": {
             "column": "variable",
             "props": {
                 "manual": {
-                    "rm7": {
-                        "name": "täglich (rollierender 7-Tages Durchschnitt)"
+                    "rm28": {
+                        "name": "Durchschnitt der letzten 28-Tage"
                     },
                     "cum": {
                         "stroke-width": 3,
-                        "name": "kumuliert"
+                        "name": "Summe seit Jahresbeginn"
                     }
                 }
             }

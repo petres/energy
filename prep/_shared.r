@@ -52,15 +52,20 @@ g$aggm$params = modifyList(g$aggm$params, read_json(g$f$creds)$aggm)
 
 
 
-addRollMean = function(d, l) {
-    d[, (paste0('rm', l)) := rollmean(value, l, fill = NA, align = "right")]
+addRollMean = function(d, l, g = character(0)) {
+    d[, (paste0('rm', l)) := rollmean(value, l, fill = NA, align = "right"), by=c(g)]
 }
+
 addCum = function(d) {
     d[, cum := cumsum(value), by=.(year(date))]
 }
 
 meltAndRemove = function(d) {
     melt(d, id.vars = "date")[!is.na(value)]
+}
+
+removeLastDays = function(d, days = 1) {
+    d[date <= max(date) - days, ]
 }
 
 # PLOT DATA

@@ -73,9 +73,7 @@
                     "Solar":  { "color": "#F3D039", "name": "Solar" },
                     "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
                     "Gas":    { "color": "#C3423F", "name": "Erdgas" },
-                    "Waste":  { "color": "#ABD6A9", "name": "Müll" },
                     "Coal":   { "color": "#8B4513", "name": "Kohle" },
-                    "Oil":    { "color": "#000",    "name": "Erdöl" },
                     "others": { "color": "#CCC",    "name": "Andere" }
                 }
             },

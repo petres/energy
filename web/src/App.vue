@@ -11,9 +11,9 @@
         <router-view></router-view>
         
         <div class="footer">
-            <span><a href="#about-modal">About/Impressum</a></span>
-            <span><a href="mailto:contact@energy.abteil.org" target="_blank">contact@energy.abteil.org</a></span>
-            <span><a href="https://github.com/petres/energy" target="_blank">github</a></span>
+            <span><a href="#about-modal">about</a></span>
+            <span><a href="mailto:contact@energy.abteil.org" target="_blank">contact</a></span>
+            <span><a href="https://github.com/petres/energy" target="_blank">code</a></span>
             <span>Vis Library: <a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a> v{{ genVis.version }}</span>
         </div>
         <about/>

@@ -7,6 +7,7 @@ import App from '@/App.vue'
 
 import CollectionBase from '@/collections/Base.vue'
 import CollectionHourly from '@/collections/Hourly.vue'
+import CollectionTest from '@/collections/Test.vue'
 
 
 const router = createRouter({
@@ -14,6 +15,7 @@ const router = createRouter({
   routes: [
     { path: '/', component: CollectionBase, name: 'base' },
     { path: '/hourly', component: CollectionHourly, name: 'hourly' },
+    { path: '/test', component: CollectionTest, name: 'test' },
   ],
 })
 
