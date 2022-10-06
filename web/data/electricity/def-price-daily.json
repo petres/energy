@@ -63,10 +63,10 @@
                 "ticks": 6,
                 "position": "left",
                 "grid": true,
-                "format": ",.2f"
+                "format": ",.0f"
             },
             "hover": {
-                "format": ",.3f"
+                "format": ",.1f"
             }
         },
         "type": {

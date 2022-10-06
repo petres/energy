@@ -1,18 +1,18 @@
 {
-    "data": "./data/generation-gas/data.csv",
+    "data": "./data/electricity/load/data-hourly.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
-        "title": "Stromproduktion aus Gas",
-        "subtitle": "in TWh",
-        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+        "title": "Stromkonsum im Tagesverlauf",
+        "subtitle": "in MWh",
+        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
     },
     "mapping": {
         "x": {
-            "column": "date20",
-            "type": "date",
+            "column": "hour",
+            "type": "numeric",
             "scale": {
-                "type": "time",
+                "type": "linear",
                 "domainAbs": [-0.2, 0.2],
                 "orientation": "horizontal"
             },
@@ -24,29 +24,9 @@
                 },
                 "position": "bottom",
                 "rotate": 0,
-                "format": "%b"
+                "format": "c"
             },
             "hover": {
-                "format": "%e. %b"
-            }
-        },
-        "x2": {
-            "column": "day",
-            "type": "numeric",
-            "scale": {
-                "type": "linear",
-                "domainAbs": [-0.2, 0.2],
-                "range": [0, "@width"]
-            },
-            "axis": {
-                "ticks": {
-                    "prop": "relative",
-                    "ref": "innerWidth",
-                    "ratio": 0.014
-                },
-                "position": "top",
-                "rotate": 0,
-                "padding": 0,
                 "format": "c"
             }
         },
@@ -69,20 +49,6 @@
                 "format": ",.3f"
             }
         },
-        "type": {
-            "column": "variable",
-            "props": {
-                "manual": {
-                    "rm7": {
-                        "name": "täglich (rollierender 7-Tages Durchschnitt)"
-                    },
-                    "cum": {
-                        "stroke-width": 3,
-                        "name": "kumuliert"
-                    }
-                }
-            }
-        },
         "year": {
             "column": "year",
             "legend": {
@@ -100,8 +66,8 @@
             },
             "props": {
                 "common": {
-                    "opacity": 0.9,
-                    "stroke-width": 2
+                    "stroke-width": 2,
+                    "opacity": 0.9
                 },
                 "manual": {
                     "2022": { "color": "#C3423F", "opacity": 1 },
@@ -115,22 +81,10 @@
             }
         }
     },
-    "facets": {
-        "dim": ["type"],
-        "scales": [],
-        "cols": {
-            "prop": "steps",
-            "ref": "totalWidth",
-            "steps": [
-                {"cut":   0, "value": 1},
-                {"cut": 850, "value": 2}
-            ]
-        }
-    },
     "plot": [
         {
             "type": "svg:path",
-            "categories": ["year", "type"],
+            "categories": ["year"],
             "props": {
                 "stroke-width": "@stroke-width",
                 "fill": "none",

@@ -81,3 +81,24 @@ dates2PlotDates = function(d) {
         date20 = c.date20
     )]
 }
+
+
+prepData = function(d.raw) {
+    d.plot = melt(d.raw, id.vars = "date")[order(date), ]
+    d.plot = d.plot[date > "2018-12-01"]
+
+    # Fill missing dates
+    d.plot = merge(
+        d.plot,
+        expand.grid(date = as.Date(min(d.plot$date):max(d.plot$date)), variable=unique(d.plot$variable)),
+        by=c('date', 'variable'), all = TRUE
+    )
+
+    l = 7
+    d.plot[, (paste0('rm', l)) := rollmean(value, l, fill = NA, align = "right", na.rm = TRUE), by=variable]
+
+    d.plot = d.plot[date >= "2019-01-01" & !is.na(rm7)]
+    d.plot[, value := NULL]
+    dates2PlotDates(d.plot)
+    d.plot[]
+}

@@ -36,4 +36,4 @@ c.order = c(c.order[c.order != nameOthers], nameOthers)
 d.agg.group[, source.group := factor(source.group, c.order, c.order)]
 d.agg.group = d.agg.group[order(date, source.group)]
 
-fwrite(d.agg.group, file.path(g$d$wd, 'generation', 'data.csv'))
+fwrite(d.agg.group, file.path(g$d$wd, 'electricity/generation', 'data.csv'))

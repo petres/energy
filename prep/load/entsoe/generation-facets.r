@@ -50,4 +50,4 @@ addRollMean(d.plot, 28, g="source.group")
 dates2PlotDates(d.plot)
 
 
-fwrite(d.plot, file.path(g$d$wd, 'generation', 'data-facets.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'electricity/generation', 'data-facets.csv'))

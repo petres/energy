@@ -1,18 +1,18 @@
 {
-    "data": "./data/electricity/price-hourly.csv",
+    "data": "./data/electricity/generation/data-facets.csv",
     "options": {
-        "height": 350,
+        "height": 200,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
-        "title": "Strompreis im Tagesverlauf",
-        "subtitle": "Spotmarkt, in €/MWh",
-        "footer": "Source: Macrobond (Series: <tt>atelspot##</tt>), EEX - European Energy Exchange"
+        "title": "Stromproduktion",
+        "subtitle": "nach Quellen, Durchschnitt letzter vier Wochen, in MWh",
+        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "mapping": {
         "x": {
-            "column": "hour",
-            "type": "numeric",
+            "column": "date20",
+            "type": "date",
             "scale": {
-                "type": "linear",
+                "type": "time",
                 "domainAbs": [-0.2, 0.2],
                 "orientation": "horizontal"
             },
@@ -24,29 +24,47 @@
                 },
                 "position": "bottom",
                 "rotate": 0,
-                "format": "c"
+                "format": "%b"
             },
             "hover": {
-                "format": "c"
+                "format": "%e. %b"
             }
         },
         "y": {
-            "column": "value",
+            "column": "rm28",
             "type": "numeric",
             "scale": {
                 "type": "linear",
+                "orientation": "vertical",
                 "domain": [0, null],
-                "domainRel": [0, 0.1],
-                "orientation": "vertical"
+                "domainRel": [0, 0.15]
             },
             "axis": {
-                "ticks": 6,
+                "ticks": 4,
                 "position": "left",
                 "grid": true,
-                "format": ",.2f"
+                "format": ".1f"
             },
             "hover": {
-                "format": ",.3f"
+                "format": ".2f"
+            }
+        },
+        "source": {
+            "column": "source.group",
+            "props": {
+                "common": {
+                    "size": 2
+                },
+                "manual": {
+                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
+                    "Solar":  { "color": "#F3D039", "name": "Solar" },
+                    "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
+                    "Gas":    { "color": "#C3423F", "name": "Erdgas" },
+                    "Coal":   { "color": "#8B4513", "name": "Kohle" },
+                    "others": { "color": "#888",    "name": "Andere" }
+                }
+            },
+            "hover": {
             }
         },
         "year": {
@@ -66,8 +84,8 @@
             },
             "props": {
                 "common": {
-                    "stroke-width": 2,
-                    "opacity": 0.9
+                    "opacity": 0.9,
+                    "stroke-width": 2
                 },
                 "manual": {
                     "2022": { "color": "#C3423F", "opacity": 1 },
@@ -81,10 +99,22 @@
             }
         }
     },
+    "facets": {
+        "dim": ["source"],
+        "scales": ["x"],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 2},
+                {"cut": 850, "value": 3}
+            ]
+        }
+    },
     "plot": [
         {
             "type": "svg:path",
-            "categories": ["year"],
+            "categories": ["source", "year"],
             "props": {
                 "stroke-width": "@stroke-width",
                 "fill": "none",

@@ -1,11 +1,11 @@
 {
-    "data": "./data/consumption-gas/data-aggm.csv",
+    "data": "./data/gas/consumption/data-econtrol.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
         "title": "Gaskonsum",
         "subtitle": "in TWh",
-        "footer": "Source: AGGM - Austrian Gas Grid Management"
+        "footer": "Source: e-control"
     },
     "mapping": {
         "x": {

@@ -17,5 +17,5 @@ c.series = c(
 d.plot = getPrepMacrobondData(c.series)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'others', 'brent-daily.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'others', 'data-brent.csv'))
 

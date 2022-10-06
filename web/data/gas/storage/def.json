@@ -1,18 +1,18 @@
 {
-    "data": "./data/electricity/price-hourly.csv",
+    "data": "./data/gas/storage/data.csv",
     "options": {
         "height": 350,
-        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
-        "title": "Strompreis im Tagesverlauf",
-        "subtitle": "Spotmarkt, in €/MWh",
-        "footer": "Source: Macrobond (Series: <tt>atelspot##</tt>), EEX - European Energy Exchange"
+        "margins": {"top": 40, "right": 30, "bottom": 35, "left": 50},
+        "title": "Speicherfüllstand",
+        "subtitle": "in TWh",
+        "footer": "Source: GIE – Gas Infrastructure Europe"
     },
     "mapping": {
         "x": {
-            "column": "hour",
-            "type": "numeric",
+            "column": "date20",
+            "type": "date",
             "scale": {
-                "type": "linear",
+                "type": "time",
                 "domainAbs": [-0.2, 0.2],
                 "orientation": "horizontal"
             },
@@ -24,9 +24,29 @@
                 },
                 "position": "bottom",
                 "rotate": 0,
-                "format": "c"
+                "format": "%b"
             },
             "hover": {
+                "format": "%e. %b"
+            }
+        },
+        "x2": {
+            "column": "day",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domainAbs": [-0.2, 0.2],
+                "range": [0, "@width"]
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.014
+                },
+                "position": "top",
+                "rotate": 0,
+                "padding": 0,
                 "format": "c"
             }
         },
@@ -36,7 +56,6 @@
             "scale": {
                 "type": "linear",
                 "domain": [0, null],
-                "domainRel": [0, 0.1],
                 "orientation": "vertical"
             },
             "axis": {
@@ -46,7 +65,7 @@
                 "format": ",.2f"
             },
             "hover": {
-                "format": ",.3f"
+                "format": ",.2f"
             }
         },
         "year": {
@@ -66,11 +85,11 @@
             },
             "props": {
                 "common": {
-                    "stroke-width": 2,
-                    "opacity": 0.9
+                    "stroke-width": 3,
+                    "opacity": 0.7
                 },
                 "manual": {
-                    "2022": { "color": "#C3423F", "opacity": 1 },
+                    "2022": { "color": "#C3423F", "opacity": 0.9 },
                     "2021": { "color": "#BBD7EE" },
                     "2020": { "color": "#F3D039" },
                     "2019": { "color": "#ABD6A9" }

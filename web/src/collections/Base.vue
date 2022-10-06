@@ -1,12 +1,13 @@
 <template>
     <div class="visualisations">
-        <!-- <gen-vis src="./data/consumption-gas/def-econtrol.json"/> -->
-        <gen-vis src="./data/load/def.json"/>
+        <!-- <gen-vis src="./data/gas/def-consumption-econtrol.json"/> -->
+        <gen-vis src="./data/electricity/load/def.json"/>
         <gen-vis src="./data/electricity/def-price-daily.json"/>
-        <gen-vis src="./data/consumption-gas/def-aggm.json"/>
-        <gen-vis src="./data/storage/def.json"/>
-        <gen-vis src="./data/generation-gas/def.json"/>
-        <gen-vis src="./data/generation/def.json"/>
+        <gen-vis src="./data/gas/consumption/def-aggm.json"/>
+        <gen-vis src="./data/gas/def-price.json"/>
+        <gen-vis src="./data/gas/storage/def.json"/>
+        <gen-vis src="./data/electricity/generation/def-gas.json"/>
+        <gen-vis src="./data/electricity/generation/def.json"/>
     </div>
 </template>
 

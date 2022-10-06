@@ -56,6 +56,11 @@ a {
     }
 }
 
+h1 a {
+    background-color: #FFF;
+    color: #222;
+    border: none;
+}
 
 
 .footer {
@@ -64,6 +69,7 @@ a {
     padding-top: 4px;
     padding-bottom: 4px;
     font-size: 11px;
+    margin-bottom: 5px;
     span {
         padding: 0 10px;
         border-right: 1px solid #888;

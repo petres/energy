@@ -79,4 +79,4 @@ d.plot = meltAndRemove(d.agg.aggm)
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'consumption-gas', 'data-aggm.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'gas/consumption', 'data-aggm.csv'))

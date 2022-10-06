@@ -1,18 +1,18 @@
 {
-    "data": "./data/load/data-hourly.csv",
+    "data": "./data/others/data-brent.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
-        "title": "Stromkonsum im Tagesverlauf",
-        "subtitle": "in MWh",
-        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
+        "title": "Rohöl Preis, Brent",
+        "subtitle": "täglich (rollierender 7-Tages Durchschnitt), in $/Barrel",
+        "footer": "Source: Macrobond, Intercontinental Exchange (ICE)"
     },
     "mapping": {
         "x": {
-            "column": "hour",
-            "type": "numeric",
+            "column": "date20",
+            "type": "date",
             "scale": {
-                "type": "linear",
+                "type": "time",
                 "domainAbs": [-0.2, 0.2],
                 "orientation": "horizontal"
             },
@@ -24,14 +24,34 @@
                 },
                 "position": "bottom",
                 "rotate": 0,
-                "format": "c"
+                "format": "%b"
             },
             "hover": {
+                "format": "%e. %b"
+            }
+        },
+        "x2": {
+            "column": "day",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domainAbs": [-0.2, 0.2],
+                "range": [0, "@width"]
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.014
+                },
+                "position": "top",
+                "rotate": 0,
+                "padding": 0,
                 "format": "c"
             }
         },
         "y": {
-            "column": "value",
+            "column": "rm7",
             "type": "numeric",
             "scale": {
                 "type": "linear",
@@ -43,10 +63,10 @@
                 "ticks": 6,
                 "position": "left",
                 "grid": true,
-                "format": ",.2f"
+                "format": ",.0f"
             },
             "hover": {
-                "format": ",.3f"
+                "format": ",.1f"
             }
         },
         "year": {

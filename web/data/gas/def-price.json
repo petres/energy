@@ -1,11 +1,11 @@
 {
-    "data": "./data/load/data.csv",
+    "data": "./data/gas/data-price.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
-        "title": "Stromkonsum",
-        "subtitle": "in TWh",
-        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
+        "title": "Gaspreis",
+        "subtitle": "CEGH, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
+        "footer": "Source: CEGH - Central European Gas Hub"
     },
     "mapping": {
         "x": {
@@ -51,7 +51,7 @@
             }
         },
         "y": {
-            "column": "value",
+            "column": "rm7",
             "type": "numeric",
             "scale": {
                 "type": "linear",
@@ -63,24 +63,10 @@
                 "ticks": 6,
                 "position": "left",
                 "grid": true,
-                "format": ",.2f"
+                "format": ",.0f"
             },
             "hover": {
-                "format": ",.3f"
-            }
-        },
-        "type": {
-            "column": "variable",
-            "props": {
-                "manual": {
-                    "rm7": {
-                        "name": "täglich (rollierender 7-Tages Durchschnitt)"
-                    },
-                    "cum": {
-                        "stroke-width": 3,
-                        "name": "kumuliert"
-                    }
-                }
+                "format": ",.1f"
             }
         },
         "year": {
@@ -115,22 +101,10 @@
             }
         }
     },
-    "facets": {
-        "dim": ["type"],
-        "scales": [],
-        "cols": {
-            "prop": "steps",
-            "ref": "totalWidth",
-            "steps": [
-                {"cut":   0, "value": 1},
-                {"cut": 850, "value": 2}
-            ]
-        }
-    },
     "plot": [
         {
             "type": "svg:path",
-            "categories": ["year", "type"],
+            "categories": ["year"],
             "props": {
                 "stroke-width": "@stroke-width",
                 "fill": "none",

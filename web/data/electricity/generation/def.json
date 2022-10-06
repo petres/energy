@@ -1,19 +1,20 @@
 {
-    "data": "./data/generation/data-hourly.csv",
+    "data": "./data/electricity/generation/data.csv",
     "options": {
         "height": 350,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
-        "title": "Stromproduktion im Tagesverlauf",
-        "subtitle": "im Jahr 2022, nach Quellen, in MWh",
+        "title": "Stromproduktion",
+        "subtitle": "nach Quellen, in TWh",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "mapping": {
         "x": {
-            "column": "hour",
-            "type": "numeric",
+            "column": "date",
+            "type": "date",
             "scale": {
-                "type": "linear",
-                "orientation": "horizontal"
+                "type": "time",
+                "orientation": "horizontal",
+                "domainAbs": [-2000000000, 2000000000]
             },
             "axis": {
                 "ticks": {
@@ -23,10 +24,10 @@
                 },
                 "label": "Year",
                 "position": "bottom",
-                "format": "c"
+                "format": "%b %y"
             },
             "hover": {
-                "format": "c"
+                "format": "%b %y"
             }
         },
         "y": {
@@ -72,9 +73,7 @@
                     "Solar":  { "color": "#F3D039", "name": "Solar" },
                     "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
                     "Gas":    { "color": "#C3423F", "name": "Erdgas" },
-                    "Waste":  { "color": "#ABD6A9", "name": "Müll" },
                     "Coal":   { "color": "#8B4513", "name": "Kohle" },
-                    "Oil":    { "color": "#000",    "name": "Erdöl" },
                     "others": { "color": "#CCC",    "name": "Andere" }
                 }
             },
@@ -94,7 +93,7 @@
                 "width": {
                     "prop": "relative",
                     "ref": "innerWidth",
-                    "ratio": 0.025
+                    "ratio": 0.017
                 }
             }
         }

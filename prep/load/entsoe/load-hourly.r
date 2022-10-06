@@ -32,5 +32,5 @@ ggplot(d.agg, aes(y = value, group = year, x = hour, color = year)) +
     geom_line()
 
 # Save
-fwrite(d.agg, file.path(g$d$wd, 'load', 'data-hourly.csv'))
+fwrite(d.agg, file.path(g$d$wd, 'electricity/load', 'data-hourly.csv'))
 

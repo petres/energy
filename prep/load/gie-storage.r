@@ -40,4 +40,4 @@ d.plot = d.base[, .(
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'storage', 'data.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'gas/storage', 'data.csv'))

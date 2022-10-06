@@ -16,5 +16,5 @@ c.series = c(
 d.plot = getPrepMacrobondData(c.series)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'others', 'eua-future-price-daily.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'others', 'date-eua.csv'))
 

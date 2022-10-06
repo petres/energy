@@ -32,5 +32,5 @@ d.plot = meltAndRemove(d.agg)
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'load', 'data.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'electricity/load', 'data.csv'))
 

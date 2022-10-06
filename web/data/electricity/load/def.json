@@ -1,18 +1,18 @@
 {
-    "data": "./data/electricity/price-hourly.csv",
+    "data": "./data/electricity/load/data.csv",
     "options": {
         "height": 350,
-        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
-        "title": "Strompreis im Tagesverlauf",
-        "subtitle": "Spotmarkt, in €/MWh",
-        "footer": "Source: Macrobond (Series: <tt>atelspot##</tt>), EEX - European Energy Exchange"
+        "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
+        "title": "Stromkonsum",
+        "subtitle": "in TWh",
+        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
     },
     "mapping": {
         "x": {
-            "column": "hour",
-            "type": "numeric",
+            "column": "date20",
+            "type": "date",
             "scale": {
-                "type": "linear",
+                "type": "time",
                 "domainAbs": [-0.2, 0.2],
                 "orientation": "horizontal"
             },
@@ -24,9 +24,29 @@
                 },
                 "position": "bottom",
                 "rotate": 0,
-                "format": "c"
+                "format": "%b"
             },
             "hover": {
+                "format": "%e. %b"
+            }
+        },
+        "x2": {
+            "column": "day",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domainAbs": [-0.2, 0.2],
+                "range": [0, "@width"]
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.014
+                },
+                "position": "top",
+                "rotate": 0,
+                "padding": 0,
                 "format": "c"
             }
         },
@@ -47,6 +67,20 @@
             },
             "hover": {
                 "format": ",.3f"
+            }
+        },
+        "type": {
+            "column": "variable",
+            "props": {
+                "manual": {
+                    "rm7": {
+                        "name": "täglich (rollierender 7-Tages Durchschnitt)"
+                    },
+                    "cum": {
+                        "stroke-width": 3,
+                        "name": "kumuliert"
+                    }
+                }
             }
         },
         "year": {
@@ -81,10 +115,22 @@
             }
         }
     },
+    "facets": {
+        "dim": ["type"],
+        "scales": [],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 850, "value": 2}
+            ]
+        }
+    },
     "plot": [
         {
             "type": "svg:path",
-            "categories": ["year"],
+            "categories": ["year", "type"],
             "props": {
                 "stroke-width": "@stroke-width",
                 "fill": "none",
