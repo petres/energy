@@ -1,11 +1,8 @@
 # - FILES ----------------------------------------------------------------------
-files = c(
-    "brent-price.r", "eua-future-price.r",
-    "price-electricity-hourly.r", "price-electricity.r",
-    "volume-electricity.r"
-)
+path = "load/macrobond"
+files = dput(grep("^[0-9a-z].*", list.files(path), value = TRUE))
 
 # - RUN IT ---------------------------------------------------------------------
-invisible(lapply(file.path('load/macrobond', files), function(f) {
+invisible(lapply(file.path(path, files), function(f) {
     l(' - ', f); source(f)
 }))
