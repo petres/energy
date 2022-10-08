@@ -32,7 +32,7 @@ import BaseCollection from '@/collections/Base.vue';
 
 const genVis = {
     path: 'https://data-science.wifo.ac.at/gen-vis/gen-vis',
-    version: '0.2.3'
+    version: '0.2.4'
 }
 
 export default {

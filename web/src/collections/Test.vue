@@ -6,7 +6,6 @@
         <gen-vis src="./data/others/def-coal.json"/>
         <gen-vis src="./data/others/def-eua.json"/>
         <gen-vis src="./data/others/def-dollar.json"/>
-        <gen-vis src="./data/electricity/generation/def-facets.json"/>
     </div>
 </template>
 

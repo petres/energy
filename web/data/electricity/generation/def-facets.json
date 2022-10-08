@@ -1,5 +1,5 @@
 {
-    "data": "./data/electricity/generation/data-facets.csv",
+    "data": "data-facets.csv",
     "options": {
         "height": 200,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
@@ -7,6 +7,20 @@
         "subtitle": "nach Quellen, Durchschnitt letzter vier Wochen, in MWh",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
+    "globals": {
+        "shareScale": ["x"]
+    },
+    "formElements": [{
+        "id": "scale",
+        "name": "Y-Scala",
+        "ref": "shareScale",
+
+        "type": "switch",
+        "values": [
+            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
+            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
+        ]
+    }],
     "mapping": {
         "x": {
             "column": "date20",
@@ -63,8 +77,6 @@
                     "Coal":   { "color": "#8B4513", "name": "Kohle" },
                     "others": { "color": "#888",    "name": "Andere" }
                 }
-            },
-            "hover": {
             }
         },
         "year": {
@@ -101,13 +113,17 @@
     },
     "facets": {
         "dim": ["source"],
-        "scales": ["x"],
+        "scales": {
+            "prop": "ref",
+            "ref": "shareScale"
+        },
         "cols": {
             "prop": "steps",
             "ref": "totalWidth",
             "steps": [
-                {"cut":   0, "value": 2},
-                {"cut": 850, "value": 3}
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2},
+                {"cut": 1000, "value": 3}
             ]
         }
     },
