@@ -20,8 +20,6 @@ return_token <- POST("https://agimos.aggm.at/datenmanagementApi/Authenticate",
 
 token <- xml_text(xml_children(xml_children(content(return_token))))[2]
 
-
-
 body_get_timeseries <- glue("<request>",
              "<metadata>",
              "<action>publicInterface</action>",
