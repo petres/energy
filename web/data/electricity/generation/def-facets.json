@@ -12,7 +12,7 @@
     },
     "formElements": [{
         "id": "scale",
-        "name": "Y-Scala",
+        "name": "Y-Skala",
         "ref": "shareScale",
 
         "type": "switch",

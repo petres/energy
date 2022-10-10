@@ -1,7 +1,15 @@
 {
     "data": "./data/electricity/generation/data.csv",
     "options": {
-        "height": 350,
+        "height": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 220},
+                {"cut": 550, "value": 260},
+                {"cut": 600, "value": 300}
+            ]
+        },
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
         "title": "Stromproduktion",
         "subtitle": "nach Quellen, in TWh",
