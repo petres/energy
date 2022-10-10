@@ -4,5 +4,5 @@ files = dput(grep("^[0-9a-z].*", list.files(path), value = TRUE))
 
 # - RUN IT ---------------------------------------------------------------------
 invisible(lapply(file.path(path, files), function(f) {
-    l(' - ', f); source(f)
+    cat(' - ', f, '\n'); source(f)
 }))
