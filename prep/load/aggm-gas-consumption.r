@@ -28,7 +28,7 @@ body_get_timeseries <- glue("<request>",
              "<payload>",
              "<timeseriesData>",
              "<from>2018-12-01T00:00:00Z</from>",
-             "<to>2022-09-27T00:00:00Z</to>",
+             "<to>{Sys.Date()}T00:00:00Z</to>",
              "<timeseries>",
              "<name>ErmittelterEKVOst</name>",
              "<name>ErmittelterEKVTirol</name>",
@@ -47,10 +47,6 @@ xml_timeseries <- content(return_timeseries)
 from <- as.POSIXct(
     xml_text(
         xml_find_all(xml_timeseries, "/response/payload/timeseriesData/timeseries/dataSet/data/from")))
-
-to <- as.POSIXct(
-    xml_text(
-        xml_find_all(xml_timeseries, "/response/payload/timeseriesData/timeseries/dataSet/data/to")))
 
 value <- as.numeric(
     xml_text(

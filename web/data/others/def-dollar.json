@@ -1,26 +1,12 @@
 {
-    "data": "data-facets.csv",
+    "data": "./data/others/data-dollar.csv",
     "options": {
-        "height": 200,
-        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
-        "title": "Stromproduktion",
-        "subtitle": "nach Quellen, Durchschnitt letzter vier Wochen, in MWh",
-        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+        "height": 350,
+        "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
+        "title": "Euro Dollar Wechselkurs",
+        "subtitle": "täglich (rollierender 7-Tages Durchschnitt), in €/$",
+        "footer": "Source: Macrobond, Intercontinental Exchange (ICE)"
     },
-    "globals": {
-        "shareScale": ["x"]
-    },
-    "formElements": [{
-        "id": "scale",
-        "name": "Y-Scala",
-        "ref": "shareScale",
-
-        "type": "switch",
-        "values": [
-            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
-            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
-        ]
-    }],
     "mapping": {
         "x": {
             "column": "date20",
@@ -44,39 +30,43 @@
                 "format": "%e. %b"
             }
         },
-        "y": {
-            "column": "rm28",
+        "x2": {
+            "column": "day",
             "type": "numeric",
             "scale": {
                 "type": "linear",
-                "orientation": "vertical",
-                "domain": [0, null],
-                "domainRel": [0, 0.15]
+                "domainAbs": [-0.2, 0.2],
+                "range": [0, "@width"]
             },
             "axis": {
-                "ticks": 4,
-                "position": "left",
-                "grid": true,
-                "format": ".1f"
-            },
-            "hover": {
-                "format": ".2f"
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.014
+                },
+                "position": "top",
+                "rotate": 0,
+                "padding": 0,
+                "format": "c"
             }
         },
-        "source": {
-            "column": "source.group",
-            "props": {
-                "common": {
-                    "size": 2
-                },
-                "manual": {
-                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
-                    "Solar":  { "color": "#F3D039", "name": "Solar" },
-                    "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
-                    "Gas":    { "color": "#C3423F", "name": "Erdgas" },
-                    "Coal":   { "color": "#8B4513", "name": "Kohle" },
-                    "others": { "color": "#888",    "name": "Andere" }
-                }
+        "y": {
+            "column": "rm7",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domain": [0, null],
+                "domainRel": [0, 0.1],
+                "orientation": "vertical"
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.2f"
+            },
+            "hover": {
+                "format": ",.3f"
             }
         },
         "year": {
@@ -96,8 +86,8 @@
             },
             "props": {
                 "common": {
-                    "opacity": 0.9,
-                    "stroke-width": 2
+                    "stroke-width": 2,
+                    "opacity": 0.9
                 },
                 "manual": {
                     "2022": { "color": "#C3423F", "opacity": 1 },
@@ -111,26 +101,10 @@
             }
         }
     },
-    "facets": {
-        "dim": ["source"],
-        "scales": {
-            "prop": "ref",
-            "ref": "shareScale"
-        },
-        "cols": {
-            "prop": "steps",
-            "ref": "totalWidth",
-            "steps": [
-                {"cut":   0, "value": 1},
-                {"cut": 550, "value": 2},
-                {"cut": 1000, "value": 3}
-            ]
-        }
-    },
     "plot": [
         {
             "type": "svg:path",
-            "categories": ["source", "year"],
+            "categories": ["year"],
             "props": {
                 "stroke-width": "@stroke-width",
                 "fill": "none",

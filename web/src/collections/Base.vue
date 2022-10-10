@@ -8,6 +8,7 @@
         <gen-vis src="./data/gas/storage/def.json"/>
         <gen-vis src="./data/electricity/generation/def-gas.json"/>
         <gen-vis src="./data/electricity/generation/def.json"/>
+        <gen-vis src="./data/electricity/generation/def-facets.json"/>
     </div>
 </template>
 

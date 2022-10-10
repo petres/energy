@@ -14,7 +14,7 @@ cd prep
 # - GAS
 # Obsolete, gas consumption is now obtained from AGGM 
 # Rscript load/econtrol-gas-consumption.r
-Rscript load/aggm-gas-consumption.r.r
+Rscript load/aggm-gas-consumption.r
 Rscript load/gie-storage.r
 
 # - ELECTRICITY 
