@@ -14,7 +14,7 @@ c.series = c(
     b_c1_cl = "price"
 )
 
-d.plot = getPrepMacrobondData(c.series)
+d.plot = getPrepMacrobondData(c.series, 'price-brent')
 
 # Save
 fwrite(d.plot, file.path(g$d$wd, 'others', 'data-brent.csv'))

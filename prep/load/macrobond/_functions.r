@@ -19,9 +19,13 @@ getMacrobondData = function (cols, frequency = NULL, startdate = NULL) {
 }
 
 
-getPrepMacrobondData = function(c.series) {
+getPrepMacrobondData = function(c.series, name = NULL) {
     d.raw = getMacrobondData(names(c.series))
     setnames(d.raw, names(c.series), c.series)
+
+    if (!is.null(name)) {
+        fwrite(d.raw, file.path(g$d$o, glue("{name}.csv")))
+    }
 
     prepData(d.raw)
 }

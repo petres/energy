@@ -6,7 +6,7 @@ loadPackages(jsonlite)
 
 # - DOIT -----------------------------------------------------------------------
 # Load
-l.base = read_json(file.path(g$d$o, 'gas-price.json'))
+l.base = read_json(file.path(g$d$o, 'gas-price-new.json'))
 sapply(l.base, `[[`, 'name')
 
 date = sapply(l.base[[4]]$data, `[[`, 1)
@@ -20,3 +20,4 @@ d.plot = prepData(d.raw)
 
 # Save
 fwrite(d.plot, file.path(g$d$wd, 'gas', 'data-price.csv'))
+fwrite(d.raw, file.path(g$d$o, 'price-gas.csv'))

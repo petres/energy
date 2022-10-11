@@ -17,7 +17,7 @@ c.series = c(
     atelspotpeak = "peak"
 )
 
-d.plot = getPrepMacrobondData(c.series)
+d.plot = getPrepMacrobondData(c.series, 'price-electricity')
 
 # Save
 fwrite(d.plot, file.path(g$d$wd, 'electricity', 'price-daily.csv'))

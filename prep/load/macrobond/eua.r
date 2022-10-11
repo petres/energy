@@ -13,7 +13,7 @@ c.series = c(
     ned_c1_st = "value"
 )
 
-d.plot = getPrepMacrobondData(c.series)
+d.plot = getPrepMacrobondData(c.series, 'price-eua')
 
 # Save
 fwrite(d.plot, file.path(g$d$wd, 'others', 'data-eua.csv'))
