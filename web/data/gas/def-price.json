@@ -121,7 +121,9 @@
                 "d": {
                     "x": "@x:scaled",
                     "y": "@y:scaled"
-                }
+                },
+                "hover-opacity": 1,
+                "hover-stroke-width": 3
             }
         }
     ]

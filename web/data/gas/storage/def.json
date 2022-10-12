@@ -93,7 +93,7 @@
             },
             "props": {
                 "common": {
-                    "stroke-width": 3,
+                    "stroke-width": 2,
                     "opacity": 0.7
                 },
                 "manual": {
@@ -121,7 +121,9 @@
                     "x": "@x:scaled",
                     "y": "@y:scaled"
                 }
-            }
+            },
+            "hover-opacity": 1,
+            "hover-stroke-width": 3
         }
     ]
 }
