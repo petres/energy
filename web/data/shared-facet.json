@@ -34,7 +34,7 @@
                 "format": ",.2f"
             },
             "hover": {
-                "format": ",.3f"
+                "format": ",.3r"
             }
         }
     },

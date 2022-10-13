@@ -49,8 +49,7 @@
                     },
                     "peak": {
                         "name": "Peak",
-                        "stroke-dasharray": 7,
-                        "visible": false
+                        "stroke-dasharray": "4, 2"
                     }
                 }
             },

@@ -1,5 +1,26 @@
 {
     "parent": "/data/shared.json",
+    "mapping": {
+        "y": {
+            "column": "rm7",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domain": [0, null],
+                "domainRel": [0, 0.1],
+                "orientation": "vertical"
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.1f"
+            }
+        }
+    },
     "plot": {
         "type": "svg:path",
         "categories": ["year"],

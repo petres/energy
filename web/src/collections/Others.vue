@@ -1,10 +1,9 @@
 
 <template>
     <div class="visualisations">
-        <gen-vis src="./data/heating-degree-days/def.json"/>
-        <gen-vis src="./data/others/def-brent.json"/>
-        <gen-vis src="./data/others/def-coal.json"/>
-        <gen-vis src="./data/others/def-eua.json"/>
+        <gen-vis src="./data/electricity/load/def-hourly.json"/>
+        <gen-vis src="./data/electricity/generation/def-hourly.json"/>
+        <gen-vis src="./data/electricity/def-price-hourly.json"/>
         <gen-vis src="./data/others/def-dollar.json"/>
     </div>
 </template>
