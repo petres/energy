@@ -9,7 +9,7 @@
                 {"cut": 600, "value": 280}
             ]
         },
-        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50}
+        "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50}
     },
     "mapping": {
         "x": {
