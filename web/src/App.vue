@@ -30,11 +30,7 @@ import axios from 'axios';
 import About from '@/About.vue';
 import BaseCollection from '@/collections/Base.vue';
 
-const genVis = {
-    // path: './data/gen-vis/gen-vis',
-    path: 'https://data-science.wifo.ac.at/gen-vis/gen-vis',
-    version: '0.2.6'
-}
+import { genVis } from '@/globals.js';
 
 export default {
     components: {

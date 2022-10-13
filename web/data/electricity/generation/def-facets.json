@@ -1,5 +1,5 @@
 {
-    "parent": "./data/shared-base.json",
+    "parent": "/data/shared-base.json",
     "data": "data-facets.csv",
     "options": {
         "height": 200,
@@ -75,7 +75,7 @@
     "plot": {
         "categories": ["source", "year"],
         "props": {
-            "hover-stroke-width": 2.5
+            "highlight-stroke-width": 2.5
         }
     }
 }

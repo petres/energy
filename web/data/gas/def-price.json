@@ -1,6 +1,6 @@
 {
-    "parent": "./data/shared-base.json",
-    "data": "./data/gas/data-price.csv",
+    "parent": "/data/shared-base.json",
+    "data": "data-price.csv",
     "options": {
         "title": "Gaspreis",
         "subtitle": "CEGH, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",

@@ -1,6 +1,6 @@
 {
-    "parent": "./data/shared.json",
-    "data": "./data/gas/storage/data.csv",
+    "parent": "/data/shared-base.json",
+    "data": "data.csv",
     "options": {
         "title": "Speicherfüllstand",
         "subtitle": "in TWh",
@@ -25,23 +25,5 @@
                 "format": ",.2f"
             }
         }
-    },
-    "plot": [
-        {
-            "type": "svg:path",
-            "categories": ["year"],
-            "props": {
-                "stroke-width": "@stroke-width",
-                "fill": "none",
-                "opacity": "@opacity",
-                "stroke": "@color",
-                "d": {
-                    "x": "@x:scaled",
-                    "y": "@y:scaled"
-                },
-                "hover-opacity": 1,
-                "hover-stroke-width": 3
-            }
-        }
-    ]
+    }
 }

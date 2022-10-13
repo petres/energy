@@ -1,5 +1,5 @@
 {
-    "parent": "./data/shared.json",
+    "parent": "/data/shared.json",
     "mapping": {
         "type": {
             "column": "variable",
@@ -8,12 +8,12 @@
                     "rm7": {
                         "name": "täglich (rollierender 7-Tages Durchschnitt)",
                         "stroke-width": 2,
-                        "hover-stroke-width": 3
+                        "highlight-stroke-width": 3
                     },
                     "cum": {
                         "name": "kumuliert",
                         "stroke-width": 3,
-                        "hover-stroke-width": 4
+                        "highlight-stroke-width": 4
                     }
                 }
             }
@@ -63,8 +63,8 @@
                     "x": "@x:scaled",
                     "y": "@y:scaled"
                 },
-                "hover-opacity": 1,
-                "hover-stroke-width": "@hover-stroke-width"
+                "highlight-opacity": 1,
+                "highlight-stroke-width": "@highlight-stroke-width"
             }
         }
     ]

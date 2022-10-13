@@ -1,6 +1,6 @@
 {
-    "parent": "./data/shared-base.json",
-    "data": "./data/electricity/price-daily.csv",
+    "parent": "/data/shared-base.json",
+    "data": "price-daily.csv",
     "options": {
         "title": "Strompreis",
         "subtitle": "Spotmarkt, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
@@ -44,11 +44,12 @@
             "props": {
                 "manual": {
                     "base": {
-                        "name": "Base"
+                        "name": "Base",
+                        "stroke-dasharray": 0
                     },
                     "peak": {
                         "name": "Peak",
-                        "stroke-dasharray": 5,
+                        "stroke-dasharray": 7,
                         "visible": false
                     }
                 }
