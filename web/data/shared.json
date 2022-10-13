@@ -1,0 +1,68 @@
+{
+    "options": {
+        "height": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 220},
+                {"cut": 550, "value": 260},
+                {"cut": 600, "value": 300}
+            ]
+        },
+        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50}
+    },
+    "mapping": {
+        "x": {
+            "column": "date20",
+            "type": "date",
+            "scale": {
+                "type": "time",
+                "domainAbs": [-0.2, 0.2],
+                "orientation": "horizontal"
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.017
+                },
+                "position": "bottom",
+                "rotate": 0,
+                "format": "%b"
+            },
+            "hover": {
+                "format": "%e. %b"
+            }
+        },
+        "year": {
+            "column": "year",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "line",
+                        "props": {
+                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
+                            "stroke": "@color", 
+                            "stroke-width": "@stroke-width",
+                            "opacity": "@opacity"
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "common": {
+                    "opacity": 0.6,
+                    "stroke-width": 2
+                },
+                "manual": {
+                    "2019": { "color": "#f3d039" },
+                    "2020": { "color": "#96b428" },
+                    "2021": { "color": "#12a7e7" },
+                    "2022": { "color": "#c3423f", "opacity": 1 }
+                }
+            },
+            "hover": {}
+        }
+    }
+}

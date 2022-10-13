@@ -1,0 +1,19 @@
+{
+    "parent": "./data/shared.json",
+    "plot": {
+        "type": "svg:path",
+        "categories": ["year"],
+        "props": {
+            "stroke-width": "@stroke-width",
+            "fill": "none",
+            "opacity": "@opacity",
+            "stroke": "@color",
+            "d": {
+                "x": "@x:scaled",
+                "y": "@y:scaled"
+            },
+            "hover-opacity": 1,
+            "hover-stroke-width": 3
+        }
+    }
+}

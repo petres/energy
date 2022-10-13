@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack serve --config build/dev.js",
     "build": "rm -rf dist && webpack --config build/prod.js",
-    "upload": "rsync -arv --delete  dist/ energy.abteil.org:/www/htdocs/w01d48d9/energy.abteil.org/",
+    "upload": "rsync -arv --delete --exclude 'data' dist/ energy.abteil.org:/www/htdocs/w01d48d9/energy.abteil.org/",
     "deploy": "npm run build && npm run upload"
   },
   "author": {

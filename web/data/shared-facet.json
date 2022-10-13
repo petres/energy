@@ -1,0 +1,71 @@
+{
+    "parent": "./data/shared.json",
+    "mapping": {
+        "type": {
+            "column": "variable",
+            "props": {
+                "manual": {
+                    "rm7": {
+                        "name": "täglich (rollierender 7-Tages Durchschnitt)",
+                        "stroke-width": 2,
+                        "hover-stroke-width": 3
+                    },
+                    "cum": {
+                        "name": "kumuliert",
+                        "stroke-width": 3,
+                        "hover-stroke-width": 4
+                    }
+                }
+            }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domain": [0, null],
+                "domainRel": [0, 0.1],
+                "orientation": "vertical"
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.2f"
+            },
+            "hover": {
+                "format": ",.3f"
+            }
+        }
+    },
+    "facets": {
+        "dim": ["type"],
+        "scales": [],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 850, "value": 2}
+            ]
+        }
+    },
+    "plot": [
+        {
+            "type": "svg:path",
+            "categories": ["year", "type"],
+            "props": {
+                "stroke-width": "@stroke-width",
+                "fill": "none",
+                "opacity": "@opacity",
+                "stroke": "@color",
+                "d": {
+                    "x": "@x:scaled",
+                    "y": "@y:scaled"
+                },
+                "hover-opacity": 1,
+                "hover-stroke-width": "@hover-stroke-width"
+            }
+        }
+    ]
+}

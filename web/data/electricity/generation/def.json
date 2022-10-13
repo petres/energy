@@ -1,5 +1,5 @@
 {
-    "data": "./data/electricity/generation/data.csv",
+    "data": "data.csv",
     "options": {
         "height": {
             "prop": "steps",
