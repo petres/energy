@@ -59,7 +59,7 @@ d.agg.aggm <- d.agg.aggm[,.(
 data_prediction <- data_prediction [,.(
     date,
     value=prediction,
-    type="Nachfrage geschätzt mit Klima von 2022\n basierend auf Daten 2019-2021"
+    type="Nachfrage geschätzt mit Klima von 2022\n Modell trainiert auf Daten 2019-2021"
 )]
 
 d.all <- rbindlist(list(d.agg.aggm,
@@ -71,10 +71,10 @@ d.plot <- melt(d.all, id.vars = c("date", "type"))[!is.na(value)]
 dates2PlotDates(d.plot)
 
 #proposal for visualization
-d.plot %>%
-    filter(year==2022) %>%
-    filter(variable=="rm7") %>%
-    ggplot(aes(x=day, y=value)) +
-    geom_line(aes(linetype=type)) +
-    theme_bw()
+#d.plot %>%
+#    filter(year==2022) %>%
+#    filter(variable=="rm7") %>%
+#    ggplot(aes(x=day, y=value)) +
+#    geom_line(aes(linetype=type)) +
+#    theme_bw()
 
