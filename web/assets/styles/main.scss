@@ -43,22 +43,43 @@ body {
     }
 }
 
+.menu {
+    text-align: center;
+    font-size: 13px;
+    .title {
+        padding-right: 10px;
+    }
+    .entry {
+        display: inline-block;
+        padding: 10px 6px;
+        
+        a {
+            &.router-link-active {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+    border-bottom: 1px solid #DDD;
+}
+
 a {
     display: inline-block;
     text-decoration: none;
     color: #FFF;
     background-color: #222;
-    padding: 1px 2px;
+    padding: 1px 4px 2px;
     border: 1px solid #222;
     &:hover {
         background-color: #FFF;
         color: #222;
     }
+    border-radius: 4px;
 }
 
 h1 a {
     background-color: #FFF;
-    color: #222;
+    color: #000;
     border: none;
 }
 
@@ -87,14 +108,28 @@ h1 a {
          .vis {
              .subtitle {
                  margin-top: -1px !important;
+                 margin-bottom: -2px !important;
              }
              .facet-title {
-                 font-weight: 800;
+                 font-weight: 400;
                  text-align: center;
              }
+             .vis-form-elements {
+                margin-top: -2px;
+                margin-bottom: 4px;
+             }
+             .vis-legends {
+                position: relative;
+                .legend[data-dim='type'] {
+                    position: absolute;
+                    top: -4px;
+                    left: 270px;
+                }
+             }
+
              svg {
                  g.axis-position-left text{
-                     transform: translate(2px, 0);
+                     transform: translate(3px, 0);
                  }
              }
          }

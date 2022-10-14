@@ -1,5 +1,5 @@
 {
-    "data": "./data/electricity/load/data-hourly.csv",
+    "data": "data-hourly.csv",
     "options": {
         "height": 350,
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},

@@ -1,5 +1,5 @@
 {
-    "parent": "./data/shared-facet.json",
+    "parent": "/data/shared-facet.json",
     "data": "data.csv",
     "options": {
         "title": "Stromkonsum",

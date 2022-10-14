@@ -9,8 +9,13 @@
 
 export default {
     props: ['src'],
-    // data: () => ({
-    //
-    // })
+    // mounted() {
+    //     if (window.mountGenVisByClass) {
+    //         window.mountGenVisByClass('genVis')
+    //         console.log('now')
+    //     } else {
+    //         window.onload = () => window.mountGenVisByClass('genVis')
+    //     }
+    // } 
 }
 </script>
