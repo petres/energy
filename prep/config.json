@@ -1,0 +1,11 @@
+{
+    "d": {
+        "entsoe": "data/entsoe",
+        "era5": "data/era5",
+        "o": "data/output",
+        "web": "../web/data"
+    },
+    "f": {
+        "creds": "creds.json"
+    }
+}

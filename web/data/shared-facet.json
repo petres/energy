@@ -1,23 +1,6 @@
 {
     "parent": "/data/shared.json",
     "mapping": {
-        "type": {
-            "column": "variable",
-            "props": {
-                "manual": {
-                    "rm7": {
-                        "name": "täglich (rollierender 7-Tages Durchschnitt)",
-                        "stroke-width": 2,
-                        "highlight-stroke-width": 3
-                    },
-                    "cum": {
-                        "name": "kumuliert",
-                        "stroke-width": 3,
-                        "highlight-stroke-width": 4
-                    }
-                }
-            }
-        },
         "y": {
             "column": "value",
             "type": "numeric",
@@ -36,6 +19,23 @@
             "hover": {
                 "format": ",.3r"
             }
+        },
+        "type": {
+            "column": "variable",
+            "props": {
+                "manual": {
+                    "rm7": {
+                        "name": "täglich (rollierender 7-Tages Durchschnitt)",
+                        "stroke-width": 2,
+                        "highlight-stroke-width": 3
+                    },
+                    "cum": {
+                        "name": "kumuliert",
+                        "stroke-width": 3,
+                        "highlight-stroke-width": 4
+                    }
+                }
+            }
         }
     },
     "facets": {
@@ -50,8 +50,7 @@
             ]
         }
     },
-    "plot": [
-        {
+    "plot": {
             "type": "svg:path",
             "categories": ["year", "type"],
             "props": {
@@ -66,6 +65,5 @@
                 "highlight-opacity": 1,
                 "highlight-stroke-width": "@highlight-stroke-width"
             }
-        }
-    ]
+    }
 }

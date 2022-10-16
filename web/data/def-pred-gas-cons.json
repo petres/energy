@@ -1,0 +1,70 @@
+{
+    "parent": "data/shared-facet.json",
+    "data": "pred-gas-cons.csv",
+    "options": {
+        "title": "Tatsächlicher Gaskonsum vs. geschätzter Konsum",
+        "subtitle": "in TWh",
+        "footer": "Source: AGGM - Austrian Gas Grid Management, ERA5, <a href='https://github.com/petres/energy/blob/main/prep/calc/predict-gas-consumption.r' target='_blank'>Model</a> basierend auf Fixeffekten und Temperatur"
+    },
+    "mapping": {
+        "variable": {
+            "column": "type",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "line",
+                        "props": {
+                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
+                            "stroke": "#000", "stroke-width": 2,
+                            "stroke-dasharray": "@stroke-dasharray"
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "manual": {
+                    "value": {
+                        "name": "Wert",
+                        "stroke-dasharray": 0
+                    },
+                    "prediction": {
+                        "name": "Schätzung",
+                        "stroke-dasharray": "4, 2"
+                    }
+                }
+            },
+            "hover": {
+
+            }
+        },
+        "type": {
+            "column": "variable",
+            "props": {
+                "manual": {
+                    "cum": {
+                        "stroke-width": 2,
+                        "highlight-stroke-width": 3
+                    }
+                }
+            }
+        },
+        "year": {
+            "props": {
+                "common": {
+                    "visible": false
+                },
+                "manual": {
+                    "2021": { "visible": true },
+                    "2022": { "visible": true }
+                }
+            }
+        }
+    },
+    "plot": {
+        "categories": ["year", "variable", "type"],
+        "props": {
+            "stroke-dasharray": "@stroke-dasharray"
+        }
+    }
+}

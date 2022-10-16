@@ -1,11 +1,7 @@
 
 <template>
     <div class="visualisations">
-        <gen-vis src="./data/heating-degree-days/def.json"/>
-        <gen-vis src="./data/others/def-brent.json"/>
-        <gen-vis src="./data/others/def-coal.json"/>
-        <gen-vis src="./data/others/def-eua.json"/>
-        <gen-vis src="./data/others/def-dollar.json"/>
+        <gen-vis src="./data/def-pred-gas-cons.json"/>
     </div>
 </template>
 

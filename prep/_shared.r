@@ -1,30 +1,12 @@
 # - INIT -----------------------------------------------------------------------
-if (!'librarian' %in% rownames(installed.packages()))  install.packages("librarian")
+if (!'librarian' %in% rownames(installed.packages())) install.packages("librarian")
 loadPackages = librarian::shelf
-
 loadPackages(
     'data.table', 'zoo', 'glue', 'lubridate', 'jsonlite', 'httr', 'xml2'
 )
 
-l = function (..., iL = 0, nL = TRUE)  {
-    iS = paste(rep(" ", iL), collapse = "")
-    m = paste0(iS, paste0(...))
-    if (nL)
-        m = paste0(m, "\n")
-    cat(m)
-}
-
-
 # - GLOB -----------------------------------------------------------------------
-g = list(
-    d = list(
-        entsoe = file.path("data", "entsoe"),
-        o = file.path("data", "output"),
-        wd = file.path("..", "web", "data")
-    ),
-    f = list(
-        creds = "creds.json"
-    ),
+g = modifyList(read_json("config.json"), list(
     entsoe = list(
         params = list(
             protocol = "sftp",
@@ -39,37 +21,35 @@ g = list(
     ), aggm = list(
         params = list()
     )
-)
-
-g$entsoe$params = modifyList(g$entsoe$params, read_json(g$f$creds)$entsoe)
-g$gie$params = modifyList(g$gie$params, read_json(g$f$creds)$gie)
-g$aggm$params = modifyList(g$aggm$params, read_json(g$f$creds)$aggm)
-
-# g$entsoe = modifyList(g$entsoe, list(
-#     connString = glue("{g$entsoe$params$protocol}://{g$entsoe$params$server}"),
-#     credString = glue("{g$entsoe$params$user}:{g$entsoe$params$pass}")
-# ))
+))
 
 
+# - CREDS ----------------------------------------------------------------------
+creds = read_json(g$f$creds)
+invisible(sapply(names(creds), function(n) {
+    g[[n]]$params <<- modifyList(g[[n]]$params, creds[[n]])
+}))
+rm(creds)
 
+
+# - HELPERS --------------------------------------------------------------------
 addRollMean = function(d, l, g = character(0)) {
     d[, (paste0('rm', l)) := rollmean(value, l, fill = NA, align = "right"), by=c(g)]
 }
 
-addCum = function(d) {
-    d[, cum := cumsum(value), by=.(year(date))]
+addCum = function(d, g = character(0)) {
+    d[, year := year(date)]
+    d[, cum := cumsum(value), by=c("year", g)]
+    d[, year := NULL]
 }
 
 meltAndRemove = function(d) {
-    melt(d, id.vars = "date")[!is.na(value)]
+    melt(d, id.vars = "date")[!is.na(value)][date >= "2019-01-01"]
 }
 
 removeLastDays = function(d, days = 1) {
     d[date <= max(date) - days, ]
 }
-
-# PLOT DATA
-# d.agg = loadData(file.path(g$d$o, 'consumption-gas.csv'))
 
 dates2PlotDates = function(d) {
     c.date20 = copy(d$date)
@@ -102,3 +82,13 @@ prepData = function(d.raw) {
     dates2PlotDates(d.plot)
     d.plot[]
 }
+
+# logging
+l = function (..., iL = 0, nL = TRUE)  {
+    iS = paste(rep(" ", iL), collapse = "")
+    m = paste0(iS, paste0(...))
+    if (nL)
+        m = paste0(m, "\n")
+    cat(m)
+}
+
