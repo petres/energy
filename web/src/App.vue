@@ -50,7 +50,7 @@ export default {
             { route: "prices", name: "Energiepreise" },
             { route: "gas", name: "Gas" },
             { route: "electricity", name: "Strom" },
-            { route: "test", name: "test" },
+//            { route: "test", name: "test" },
         ]
     }),
     mounted() {

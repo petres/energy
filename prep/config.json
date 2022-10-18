@@ -3,7 +3,7 @@
         "entsoe": "data/entsoe",
         "era5": "data/era5",
         "o": "data/output",
-        "web": "../web/data"
+        "wd": "../web/data"
     },
     "f": {
         "creds": "creds.json"
