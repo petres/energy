@@ -191,4 +191,22 @@ dependencies:
   - zlib=1.2.12=h5eee18b_3
   - zstd=1.5.2=ha4553b6_0
   - pip:
+    - blessings==1.7
+    - codecov==2.1.12
+    - coloredlogs==15.0.1
+    - colour-runner==0.1.1
+    - coverage==6.5.0
+    - deepdiff==6.2.1
+    - distlib==0.3.6
+    - filelock==3.8.0
+    - humanfriendly==10.0
+    - ordered-set==4.1.0
+    - platformdirs==2.5.2
+    - pluggy==1.0.0
+    - py==1.11.0
     - pyyaml==6.0
+    - rootpath==0.1.1
+    - termcolor==2.0.1
+    - tomli==2.0.1
+    - tox==3.26.0
+    - virtualenv==20.16.5

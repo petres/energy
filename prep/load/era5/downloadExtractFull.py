@@ -2,17 +2,27 @@
 # coding: utf-8
 
 import cdsapi
-import os.path
+import os, sys
 from datetime import date, timedelta
 from pathlib import Path
-import xarray as xr
+import rootpath
 
-c = cdsapi.Client()
+ROOT_PATH = Path(rootpath.detect())
+os.chdir(str(ROOT_PATH))
+sys.path.append(str(ROOT_PATH))
+
+from _shared import getConfig
+config = getConfig()
+
+DATA_FOLDER = ROOT_PATH/config['d']['era5']
+CLIMATE_FOLDER = DATA_FOLDER/"climate"
 
 START_YEAR = 2012
 DELAY_DAYS = 5
-DATA_FOLDER = Path("./data/era5")
-CLIMATE_FOLDER = DATA_FOLDER/"climate"
+
+RENEW_CURRENT_YEAR = False
+
+c = cdsapi.Client()
 
 until = date.today() - timedelta(days = DELAY_DAYS)
 
@@ -72,3 +82,22 @@ download_era5_temperature_years(range(START_YEAR, (until.year - 1)), CLIMATE_FOL
 print(f'Downloading until {until}')
 download_era5_temperature_last_year(until, CLIMATE_FOLDER)
 
+
+
+
+
+
+import xarray as xr
+import pandas as pd
+
+POPULATION_FOLDER = DATA_FOLDER/"population"
+
+pop = xr.open_dataarray(POPULATION_FOLDER/'pop_era5_rel.nc')
+# POP TO CSV
+t = pd.melt(pop.to_pandas(), ignore_index = False)
+t.to_csv(DATA_FOLDER/'pop.csv')
+
+temperature = xr.open_mfdataset(str(CLIMATE_FOLDER/'*.nc'))
+temperature = temperature.t2m  - 273.15
+temperature = temperature.resample(time="d").mean()
+temperature.to_dataframe().to_csv(DATA_FOLDER/'temp.csv')
