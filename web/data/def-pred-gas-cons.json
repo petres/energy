@@ -4,7 +4,7 @@
     "options": {
         "title": "Tatsächlicher Gaskonsum vs. geschätzter Konsum",
         "subtitle": "in TWh",
-        "footer": "Source: AGGM - Austrian Gas Grid Management, ERA5, <a href='https://github.com/petres/energy/blob/main/prep/calc/predict-gas-consumption.r' target='_blank'>Model</a> basierend auf Fixeffekten und Temperatur"
+        "footer": "Source: AGGM - Austrian Gas Grid Management, ERA5, <a href='https://github.com/petres/energy/blob/main/prep/calc/prediction-gas-consumption/linearModel1.r#L49' target='_blank'>Model</a> basierend auf Fixeffekten und Temperatur"
     },
     "mapping": {
         "variable": {

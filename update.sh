@@ -8,9 +8,9 @@ echo `date -Iseconds` > web/data/update.txt
 cd prep
 
 # - TEMP/HEATING DAYS
-# python3 load/era5/downloadExtractFull.py
+python3 load/era5/downloadExtractFull.py
 Rscript calc/hdd-new.r
-Rscript calc/predict-gas-consumption.r
+Rscript calc/prediction-gas-consumption/linearModel1.r
 
 # - GAS
 # Obsolete, gas consumption is now obtained from AGGM 

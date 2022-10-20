@@ -64,7 +64,7 @@ d.all = melt(d.pred, variable.name = 'type',
 
 # PREP FOR PLOT
 addRollMean(d.all, 7, 'type')
-addCum(d.all)
+addCum(d.all, 'type')
 d.plot <- melt(d.all, id.vars = c("date", "type"))[!is.na(value)]
 dates2PlotDates(d.plot)
 
