@@ -86,7 +86,7 @@ addCum(d.all)
 d.plot <- melt(d.all, id.vars = c("date", "type"))[!is.na(value)]
 dates2PlotDates(d.plot)
 
-fwrite(d.plot[date >= "2019-01-01"], file.path(g$d$web, 'pred-gas-cons.csv'))
+fwrite(d.plot[date >= "2019-01-01"], file.path(g$d$wd, 'pred-gas-cons.csv'))
 
 #proposal for visualization
 # loadPackages('tidyverse')

@@ -7,14 +7,15 @@ echo `date -Iseconds` > web/data/update.txt
 # - UPDATE DATA ----------------------------------------------------------------
 cd prep
 
-# - HEATING DAYS
-# python3 heating-degree-days/download-heating-degree-days.py
-# Rscript heating-degree-days/prepare-heating-degree-days.R
+# - TEMP/HEATING DAYS
+# python3 load/era5/downloadExtractFull.py
+Rscript calc/hdd-new.r
+Rscript calc/predict-gas-consumption.r
 
 # - GAS
 # Obsolete, gas consumption is now obtained from AGGM 
 # Rscript load/econtrol-gas-consumption.r
-Rscript load/aggm-gas-consumption.r
+Rscript load/aggm/gas-consumption.r
 Rscript load/gie-storage.r
 
 # - ELECTRICITY 
