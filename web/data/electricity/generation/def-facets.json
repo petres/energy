@@ -5,7 +5,7 @@
         "height": 200,
         "margins": {"top": 0, "right": 15, "bottom": 35, "left": 40},
         "title": "Stromproduktion",
-        "subtitle": "nach Quellen, Durchschnitt letzter vier Wochen, in MWh",
+        "subtitle": "nach Quellen, Durchschnitt letzter vier Wochen, in GWh",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "globals": {
