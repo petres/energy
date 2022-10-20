@@ -1,6 +1,6 @@
 <template>
     <div class="visualisations">
-        <gen-vis src="./data/def-pred-gas-cons.json"/>
+        <gen-vis src="./data/electricity/load/def-int.json"/>
     </div>
 </template>
 

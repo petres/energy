@@ -12,6 +12,7 @@ import CollectionGas from '@/collections/Gas.vue'
 import CollectionPrices from '@/collections/Prices.vue'
 import CollectionElectricity from '@/collections/Electricity.vue'
 import CollectionOthers from '@/collections/Others.vue'
+import CollectionInternational from '@/collections/International.vue'
 
 
 const router = createRouter({
@@ -23,6 +24,7 @@ const router = createRouter({
     { path: '/electricity', component: CollectionElectricity, name: 'electricity' },
     { path: '/others', component: CollectionOthers, name: 'others' },
     { path: '/prices', component: CollectionPrices, name: 'prices' },
+    { path: '/international', component: CollectionInternational, name: 'international' },
   ],
 })
 

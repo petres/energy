@@ -1,0 +1,88 @@
+{
+    "parent": "/data/shared-base.json",
+    "data": "data-int.csv",
+    "options": {
+        "height": 200,
+        "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},
+        "title": "Stromkonsum",
+        "subtitle": "in GWh",
+        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
+    },
+    "globals": {
+        "shareScale": ["x"]
+    },
+    "formElements": [{
+        "id": "scale",
+        "name": "Y-Skala",
+        "ref": "shareScale",
+
+        "type": "switch",
+        "values": [
+            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
+            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
+        ]
+    }],
+    "mapping": {
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "orientation": "vertical",
+                "domain": [0, null],
+                "domainRel": [0, 0.15]
+            },
+            "axis": {
+                "ticks": 4,
+                "position": "left",
+                "grid": true,
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ".1f"
+            }
+        },
+        "country": {
+            "column": "country",
+            "props": {
+                "manual": {"RO":{"name":"Rumänien","visible":false},"BE":{"name":"Belgien","visible":false},"DE":{"name":"Deutschland","visible":true},"FI":{"name":"Finnland","visible":false},"LV":{"name":"Lettland","visible":false},"CY":{"name":"Zypern","visible":false},"XK":{"name":"Kosovo","visible":false},"NL":{"name":"Niederlande","visible":false},"RS":{"name":"Serbien","visible":false},"GR":{"name":"Griechenland","visible":false},"SI":{"name":"Slowenien","visible":false},"SE":{"name":"Schweden","visible":false},"SK":{"name":"Slowakei","visible":false},"HU":{"name":"Ungarn","visible":false},"FR":{"name":"Frankreich","visible":true},"CH":{"name":"Schweiz","visible":false},"LT":{"name":"Litauen","visible":false},"ME":{"name":"Montenegro","visible":false},"BA":{"name":"Bosnien und Herzegowina","visible":false},"AT":{"name":"Österreich","visible":true},"NO":{"name":"Norwegen","visible":false},"MD":{"name":"Republik Moldau","visible":false},"CZ":{"name":"Tschechische Republik","visible":false},"EE":{"name":"Estland","visible":false},"PL":{"name":"Polen","visible":false},"HR":{"name":"Kroatien","visible":false},"IE":{"name":"Irland","visible":false},"IT":{"name":"Italien","visible":false},"ES":{"name":"Spanien","visible":false},"DK":{"name":"Dänemark","visible":false},"UA":{"name":"Ukraine","visible":false},"BG":{"name":"Bulgarien","visible":false},"PT":{"name":"Portugal","visible":true},"AL":{"name":"Albanien","visible":false},"MK":{"name":"Mazedonien","visible":false},"GE":{"name":"Georgien","visible":false},"LU":{"name":"Luxemburg","visible":false}} 
+            },
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "line",
+                        "props": {
+                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
+                            "stroke": "@color", 
+                            "stroke-width": "@stroke-width",
+                            "opacity": "@opacity"
+                        }
+                    }]
+                }
+            }
+        }
+    },
+    "facets": {
+        "dim": ["country"],
+        "scales": {
+            "prop": "ref",
+            "ref": "shareScale"
+        },
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2},
+                {"cut": 1000, "value": 3}
+            ]
+        }
+    },
+    "plot": {
+        "categories": ["country", "year"],
+        "props": {
+            "highlight-stroke-width": 2.5
+        }
+    }
+}

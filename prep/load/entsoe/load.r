@@ -6,21 +6,16 @@ source('load/entsoe/_shared.r')
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
     type = 'load', month.start = month.start, month.end = month.end
-    # type = 'load', month.start = "2022-08", month.end = month.end, check.updates = FALSE
+    # type = 'load', month.start = "2022-02", month.end = "2022-06", check.updates = FALSE
 )
-
-# sort(unique(d.base$AreaName))
 
 # Filter, Aggregate
 d.agg = d.base[AreaName == "AT CTY", .(
     value = sum(TotalLoadValue)/10^6/4
 ), by = .(date = as.Date(DateTime))][order(date)]
 
-# Remove latest two days
-d.agg = d.agg[1:(nrow(d.agg) - 2), ]
-
-# d.base[MapCode == 'AT', .(load = sum(TotalLoadValue)) , by = .(AreaTypeCode, AreaName, MapCode)]
-
+# Delete last (most probably incomplete) obs
+d.agg = removeLastDays(d.agg, 2)
 
 # Save
 fwrite(d.agg, file.path(g$d$o, 'load.csv'))
