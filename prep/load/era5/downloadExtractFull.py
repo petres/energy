@@ -77,7 +77,7 @@ def download_era5_temperature_last_year(until, folder):
         c.retrieve(queryBase['dataset'], queryBase['options'] | options, filename)
 
 
-download_era5_temperature_years(range(START_YEAR, (until.year - 1)), CLIMATE_FOLDER)
+download_era5_temperature_years(range(START_YEAR, (until.year)), CLIMATE_FOLDER)
 
 print(f'Downloading until {until}')
 download_era5_temperature_last_year(until, CLIMATE_FOLDER)
