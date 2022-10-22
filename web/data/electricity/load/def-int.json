@@ -45,7 +45,160 @@
         "country": {
             "column": "country",
             "props": {
-                "manual": {"RO":{"name":"Rumänien","visible":false},"BE":{"name":"Belgien","visible":false},"DE":{"name":"Deutschland","visible":true},"FI":{"name":"Finnland","visible":false},"LV":{"name":"Lettland","visible":false},"CY":{"name":"Zypern","visible":false},"XK":{"name":"Kosovo","visible":false},"NL":{"name":"Niederlande","visible":false},"RS":{"name":"Serbien","visible":false},"GR":{"name":"Griechenland","visible":false},"SI":{"name":"Slowenien","visible":false},"SE":{"name":"Schweden","visible":false},"SK":{"name":"Slowakei","visible":false},"HU":{"name":"Ungarn","visible":false},"FR":{"name":"Frankreich","visible":true},"CH":{"name":"Schweiz","visible":false},"LT":{"name":"Litauen","visible":false},"ME":{"name":"Montenegro","visible":false},"BA":{"name":"Bosnien und Herzegowina","visible":false},"AT":{"name":"Österreich","visible":true},"NO":{"name":"Norwegen","visible":false},"MD":{"name":"Republik Moldau","visible":false},"CZ":{"name":"Tschechische Republik","visible":false},"EE":{"name":"Estland","visible":false},"PL":{"name":"Polen","visible":false},"HR":{"name":"Kroatien","visible":false},"IE":{"name":"Irland","visible":false},"IT":{"name":"Italien","visible":false},"ES":{"name":"Spanien","visible":false},"DK":{"name":"Dänemark","visible":false},"UA":{"name":"Ukraine","visible":false},"BG":{"name":"Bulgarien","visible":false},"PT":{"name":"Portugal","visible":true},"AL":{"name":"Albanien","visible":false},"MK":{"name":"Mazedonien","visible":false},"GE":{"name":"Georgien","visible":false},"LU":{"name":"Luxemburg","visible":false}} 
+                "manual": {
+                    "AL": {
+                        "name": "Albanien",
+                        "visible": false
+                    },
+                    "BE": {
+                        "name": "Belgien",
+                        "visible": false
+                    },
+                    "BA": {
+                        "name": "Bosnien und Herzegowina",
+                        "visible": false
+                    },
+                    "BG": {
+                        "name": "Bulgarien",
+                        "visible": false
+                    },
+                    "DE": {
+                        "name": "Deutschland",
+                        "visible": true
+                    },
+                    "DK": {
+                        "name": "Dänemark",
+                        "visible": false
+                    },
+                    "EE": {
+                        "name": "Estland",
+                        "visible": false
+                    },
+                    "FI": {
+                        "name": "Finnland",
+                        "visible": false
+                    },
+                    "FR": {
+                        "name": "Frankreich",
+                        "visible": true
+                    },
+                    "GE": {
+                        "name": "Georgien",
+                        "visible": false
+                    },
+                    "GR": {
+                        "name": "Griechenland",
+                        "visible": false
+                    },
+                    "GB": {
+                        "name": "Großbritannien",
+                        "visible": false
+                    },
+                    "IE": {
+                        "name": "Irland",
+                        "visible": false
+                    },
+                    "IT": {
+                        "name": "Italien",
+                        "visible": true
+                    },
+                    "XK": {
+                        "name": "Kosovo",
+                        "visible": false
+                    },
+                    "HR": {
+                        "name": "Kroatien",
+                        "visible": false
+                    },
+                    "LV": {
+                        "name": "Lettland",
+                        "visible": false
+                    },
+                    "LT": {
+                        "name": "Litauen",
+                        "visible": false
+                    },
+                    "LU": {
+                        "name": "Luxemburg",
+                        "visible": false
+                    },
+                    "MK": {
+                        "name": "Mazedonien",
+                        "visible": false
+                    },
+                    "ME": {
+                        "name": "Montenegro",
+                        "visible": false
+                    },
+                    "NL": {
+                        "name": "Niederlande",
+                        "visible": false
+                    },
+                    "NO": {
+                        "name": "Norwegen",
+                        "visible": false
+                    },
+                    "PL": {
+                        "name": "Polen",
+                        "visible": false
+                    },
+                    "PT": {
+                        "name": "Portugal",
+                        "visible": false
+                    },
+                    "MD": {
+                        "name": "Republik Moldau",
+                        "visible": false
+                    },
+                    "RO": {
+                        "name": "Rumänien",
+                        "visible": false
+                    },
+                    "SE": {
+                        "name": "Schweden",
+                        "visible": false
+                    },
+                    "CH": {
+                        "name": "Schweiz",
+                        "visible": true
+                    },
+                    "RS": {
+                        "name": "Serbien",
+                        "visible": false
+                    },
+                    "SK": {
+                        "name": "Slowakei",
+                        "visible": false
+                    },
+                    "SI": {
+                        "name": "Slowenien",
+                        "visible": false
+                    },
+                    "ES": {
+                        "name": "Spanien",
+                        "visible": false
+                    },
+                    "CZ": {
+                        "name": "Tschechische Republik",
+                        "visible": false
+                    },
+                    "UA": {
+                        "name": "Ukraine",
+                        "visible": false
+                    },
+                    "HU": {
+                        "name": "Ungarn",
+                        "visible": true
+                    },
+                    "CY": {
+                        "name": "Zypern",
+                        "visible": false
+                    },
+                    "AT": {
+                        "name": "Österreich",
+                        "visible": true
+                    }
+                }
             },
             "legend": {
                 "symbol": {

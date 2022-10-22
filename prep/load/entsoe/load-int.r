@@ -5,8 +5,8 @@ source('load/entsoe/_shared.r')
 
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
-    # type = 'load', month.start = month.start, month.end = month.end
-    type = 'load', month.start = "2021-12", month.end = "2022-06", check.updates = FALSE
+    type = 'load', month.start = month.start, month.end = month.end
+    # type = 'load', month.start = "2019-12", month.end = month.end, check.updates = TRUE
 )
 
 
@@ -65,23 +65,34 @@ prep = function(di, l = 7, g = character(0)) {
 d.plot = prep(d.agg, l = 7, g = "country")
 d.plot = d.plot[variable %in% c('rm7')]
 # d.plot = d.plot[country %in% c('AT', 'DE', 'PT', 'FR') & date >= "2022-01-01"]
-d.plot = d.plot[as.integer(date - min(date)) %% 5 == 0]
+# d.plot = d.plot[as.integer(date - min(date)) %% 5 == 0]
 
 
-d.agg[country == 'AT']
 # Save
 fwrite(d.plot, file.path(g$d$wd, 'electricity/load', 'data-int.csv'))
 
 
-# loadPackages(countrycode, jsonlite)
-#
-# d.countries = data.table(iso2 = unique(d.plot$country), selected = FALSE)
-# d.countries[, name := countrycode(iso2, "iso2c", "country.name.de")]
-# d.countries[iso2 == "XK", name := "Kosovo"]
-#
-# d.countries[iso2 %in% c('AT', 'DE', 'PT', 'FR'), selected := TRUE]
-#
-# toJSON(sapply(d.countries$iso2, function(c) list(
-#     name = d.countries[iso2 == c]$name,
-#     visible = d.countries[iso2 == c]$selected
-# ), simplify = FALSE), auto_unbox = TRUE)
+
+loadPackages(countrycode, jsonlite)
+
+d.countries = data.table(iso2 = unique(d.plot$country), selected = FALSE)
+d.countries[, name := countrycode(iso2, "iso2c", "country.name.de")]
+d.countries[iso2 == "XK", name := "Kosovo"]
+
+d.countries = d.countries[order(name)]
+
+d.countries[iso2 %in% c('AT', 'DE', 'IT', 'FR', 'CH', 'HU'), selected := TRUE]
+
+j = toJSON(sapply(as.character(d.countries$iso2), function(c) list(
+    name = d.countries[iso2 == c]$name,
+    visible = d.countries[iso2 == c]$selected
+), simplify = FALSE), auto_unbox = TRUE, pretty = 4)
+
+# writeLines(j, 'clipboard')
+
+# d.plot[, country := factor(country, levels = d.countries[order(name)]$iso2)]
+# d.plot = d.plot[order(country, date)]
+
+
+
+
