@@ -14,7 +14,7 @@
     "email": "peter.reschenhofer@wifo.ac.at"
   },
   "dependencies": {
-    "axios": "^0.27",
+    "axios": "^1",
     "copy-webpack-plugin": "^11",
     "css-loader": "^6",
     "html-webpack-plugin": "^5",
