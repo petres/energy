@@ -30,11 +30,17 @@ d.temp[, hdd := ifelse(temp <= 12, v.raumtemp - temp, 0)]
 d.comb = merge(d.temp, d.pop, by=c("latitude", "longitude"))
 # d.comb[, sum(pop), by=.(time)]
 
-d.final = d.comb[, .(
+d.austria = d.comb[, .(
     temp = sum(temp*pop),
     hdd = sum(hdd*pop)
 ), by=.(date = time)]
 
+d.vienna = d.comb[latitude == 48.25 & longitude == 16.25, .(
+    date = time, temp.vienna = temp, hdd.vienna = temp
+)]
+
+d.final = merge(d.austria, d.vienna, by = 'date')
 
 # - SAVE -----------------------------------------------------------------------
+
 fwrite(d.final, file.path(g$d$o, 'temp-hdd.csv'))
