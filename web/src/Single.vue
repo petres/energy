@@ -1,6 +1,6 @@
 <template>
     <div class='visEntry'>
-        <gen-vis :src="`/data/${$route.params.id.replace('~', '/')}.json`"/>
+        <gen-vis :src="`/data/${$route.params.id.replaceAll('~', '/')}.json`"/>
     </div>
 </template>
 

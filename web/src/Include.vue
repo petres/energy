@@ -13,19 +13,19 @@
 
 <script>
 
-// const urlSingle = "/single/";
-const urlSingle = "https://energy.abteil.org/single/";
+const urlSingle = "/single/";
+// const urlSingle = "https://energy.abteil.org/single/";
 
 export default {
     methods: {
         escaped (id) {
-            return id.replace('/', '~')
+            return id.replaceAll('/', '~')
         },
         url (id) {
             return urlSingle + this.escaped(id);
         },
         iframe (id) {
-            return `<iframe width="100%" height="400px" frameBorder="0" src="${this.url(id)}"/>`
+            return `<iframe width="100%" height="450px" frameBorder="0" src="${this.url(id)}"/>`
         }
     },
     data: () => ({
