@@ -1,5 +1,5 @@
 {
-    "parent": "data/shared-facet.json",
+    "parent": "/data/shared-facet.json",
     "data": "pred-gas-cons.csv",
     "options": {
         "title": "Tatsächlicher Gaskonsum vs. geschätzter Konsum",
