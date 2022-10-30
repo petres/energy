@@ -37,13 +37,12 @@
 import axios from 'axios';
 
 import About from '@/About.vue';
-import BaseCollection from '@/collections/Base.vue';
 
 import { genVis, collections } from '@/globals.js';
 
 export default {
     components: {
-        About, BaseCollection,
+        About,
     },
     data: () => ({
         updated: null,

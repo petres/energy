@@ -1,0 +1,58 @@
+{
+    "data": "gas-oil.csv",
+    "parent": "/data/shared-base.json",
+    "options": {
+        "title": "Spritpreise",
+        "subtitle": "in €/Liter",
+        "footer": "Source: EC Weekly Oil Bulletin"
+    },
+    "mapping": {
+        "y": {
+            "column": "last",
+            "axis": {
+                "format": ",.1f"
+            },
+            "hover": {
+                "format": ",.2f"
+            }
+        },
+        "type": {
+            "column": "variable",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "line",
+                        "props": {
+                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
+                            "stroke": "#000", "stroke-width": 2,
+                            "stroke-dasharray": "@stroke-dasharray"
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "manual": {
+                    "euroSuper95": {
+                        "name": "Benzin",
+                        "stroke-dasharray": 0
+                    },
+                    "gasOil": {
+                        "name": "Diesel",
+                        "stroke-dasharray": "4, 2"
+                    }
+                }
+            },
+            "hover": {
+
+            }
+        }
+    },
+    "plot": {
+        "categories": ["year", "type"],
+        "props": {
+            "stroke-dasharray": "@stroke-dasharray"
+        }
+    }
+}
+

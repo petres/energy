@@ -17,7 +17,15 @@ const vis = {
     }
 }
 
+
 const collections = {
+    // bla: {
+    //     name: "Bla",
+    //     menu: true,
+    //     vis: [
+            
+    //     ]
+    // },
     preset: {
         name: "Preset",
         menu: true,
@@ -39,6 +47,7 @@ const collections = {
             "electricity/price",
             "gas/price",
             "others/brent",
+            "others/sprit",
             "others/coal",
             "others/eua",
         ]
