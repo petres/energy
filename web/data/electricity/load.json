@@ -1,6 +1,6 @@
 {
     "parent": "/data/shared-facet.json",
-    "data": "data.csv",
+    "data": "load.csv",
     "options": {
         "title": "Stromkonsum",
         "subtitle": "in TWh",

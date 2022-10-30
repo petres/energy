@@ -44,5 +44,5 @@ d.raw = data.table(date = as.Date(as_datetime(date/1000)), price = unlist(price)
 d.plot = prepData(d.raw)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'gas', 'data-price.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'gas', 'price.csv'))
 fwrite(d.raw, file.path(g$d$o, 'price-gas.csv'))

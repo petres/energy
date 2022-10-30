@@ -2,7 +2,7 @@
     <div>
         <div class="header">
             <h1>
-                <router-link :to="{ name: 'base'}">
+                <router-link to="/">
                     Energiedaten für Österreich
                 </router-link>
             </h1>
@@ -14,9 +14,11 @@
         
         <div class="menu">
             <span class="title">Sammlung:</span>
-            <span class="entry" v-for="e in menu">
-                <router-link :to="{ name: e.route}">{{ e.name}}</router-link>
-            </span>
+            <template v-for="[k, c] in Object.entries(menu)">
+                <span class="entry" v-if="c.menu">
+                    <router-link :to="{ name: `collection-${k}`}">{{ c.name }}</router-link>
+                </span>
+            </template>
         </div>
 
         <router-view :key="$route.path"/>
@@ -37,7 +39,7 @@ import axios from 'axios';
 import About from '@/About.vue';
 import BaseCollection from '@/collections/Base.vue';
 
-import { genVis } from '@/globals.js';
+import { genVis, collections } from '@/globals.js';
 
 export default {
     components: {
@@ -46,13 +48,7 @@ export default {
     data: () => ({
         updated: null,
         genVis: genVis,
-        menu: [
-            { route: "base", name: "Preset" },
-            { route: "prices", name: "Energiepreise" },
-            { route: "gas", name: "Gas" },
-            { route: "electricity", name: "Strom" },
-            { route: "international", name: "International" },
-        ]
+        menu: collections
     }),
     mounted() {
         const self = this;

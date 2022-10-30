@@ -6,11 +6,8 @@ loadPackages(
 )
 
 
-# - CONF -----------------------------------------------------------------------
-url = "https://ec.europa.eu/energy/observatory/reports/Oil_Bulletin_Prices_History.xlsx"
-
-
 # - DOWN -----------------------------------------------------------------------
+url = "https://ec.europa.eu/energy/observatory/reports/Oil_Bulletin_Prices_History.xlsx"
 t = tempfile(fileext = ".xlsx")
 download.file(url, t, mode = "wb")
 
@@ -25,8 +22,6 @@ d.base = d.raw[, .(
     euroSuper95 = as.numeric(sub(',', '', `Euro-super.95.(I)`))/1000,
     gasOil = as.numeric(sub(',', '', `Gas.oil.automobile.Automotive.gas.oil.Dieselkraftstoff.(I)`))/1000
 )]
-
-
 
 d.plot = melt(d.base, id.vars = "date")[order(date), ]
 d.plot = d.plot[date > "2018-12-01"]
@@ -43,7 +38,7 @@ d.plot[, last := na.locf(value), by=variable]
 d.plot = d.plot[date >= "2019-01-01"]
 d.plot[, value := NULL]
 dates2PlotDates(d.plot)
-d.plot[]
+# d.plot[]
 
 
 # - SAVE -----------------------------------------------------------------------

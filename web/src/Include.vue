@@ -13,8 +13,8 @@
 
 <script>
 
-const urlSingle = "/single/";
-// const urlSingle = "https://energy.abteil.org/single/";
+// const urlSingle = "/single/";
+const urlSingle = "https://energy.abteil.org/single/";
 
 export default {
     methods: {

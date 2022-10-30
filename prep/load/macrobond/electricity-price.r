@@ -1,6 +1,6 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('load/macrobond/_shared.r')
+source("load/macrobond/_shared.r")
 # loadPackages()
 
 
@@ -17,8 +17,8 @@ c.series = c(
     atelspotpeak = "peak"
 )
 
-d.plot = getPrepMacrobondData(c.series, 'price-electricity')
+d.plot = getPrepMacrobondData(c.series, "price-electricity")
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'electricity', 'price-daily.csv'))
+fwrite(d.plot, file.path(g$d$wd, "electricity", "price.csv"))
 

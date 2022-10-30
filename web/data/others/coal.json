@@ -1,5 +1,5 @@
 {
-    "data": "data-coal.csv",
+    "data": "coal.csv",
     "parent": "/data/shared-base.json",
     "options": {
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},

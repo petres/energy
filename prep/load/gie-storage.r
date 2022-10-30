@@ -1,6 +1,6 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('_shared.r')
+source("_shared.r")
 loadPackages(
     RCurl
 )
@@ -9,11 +9,11 @@ loadPackages(
 # - DOIT -----------------------------------------------------------------------
 # Load
 loadGieData = function(date = Sys.Date(), page = 1) {
-    l(glue('page: {page}'))
+    l(glue("page: {page}"))
     url = glue("https://agsi.gie.eu/api?country=AT&from=2018-12-01&to={date}&size=300&page={page}")
     t = getURL(url, httpheader = c("x-key" = g$gie$params$key))
     # NO VALID JSON, HOW THEY ARE ABLE TO PRODUCE SOMETHING LIKE THAT
-    t = sub('<a href="/data-overview/eu">EU</a> > AT', '', t, fixed = TRUE)
+    t = sub("<a href=\"/data-overview/eu\">EU</a> > AT", "", t, fixed = TRUE)
     fromJSON(t)
 }
 
@@ -30,7 +30,7 @@ while(TRUE) {
 d.base = as.data.table(d.base)
 
 # Save
-saveRDS(d.base, file.path(g$d$o, 'storage.rData'))
+saveRDS(d.base, file.path(g$d$o, "storage.rData"))
 
 # Plot, Preparation
 d.plot = d.base[, .(
@@ -40,4 +40,4 @@ d.plot = d.base[, .(
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'gas/storage', 'data.csv'))
+fwrite(d.plot, file.path(g$d$wd, "gas", "storage.csv"))

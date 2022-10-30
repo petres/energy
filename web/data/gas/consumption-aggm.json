@@ -1,6 +1,6 @@
 {
     "parent": "/data/shared-facet.json",
-    "data": "data-aggm.csv",
+    "data": "consumption-aggm.csv",
     "options": {
         "title": "Gaskonsum",
         "subtitle": "in TWh",

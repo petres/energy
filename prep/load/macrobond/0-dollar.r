@@ -1,6 +1,6 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('load/macrobond/_shared.r')
+source("load/macrobond/_shared.r")
 # loadPackages()
 
 
@@ -12,8 +12,8 @@ c.series = c(
     eo_c1_cl = "price"
 )
 
-d.plot = getPrepMacrobondData(c.series, 'price-dollar')
+d.plot = getPrepMacrobondData(c.series, "price-dollar")
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'others', 'data-dollar.csv'))
+fwrite(d.plot, file.path(g$d$wd, "others", "dollar.csv"))
 

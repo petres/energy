@@ -1,5 +1,5 @@
 {
-    "data": "./data/gas/consumption/data-econtrol.csv",
+    "data": "consumption-econtrol.csv",
     "options": {
         "height": {
             "prop": "steps",

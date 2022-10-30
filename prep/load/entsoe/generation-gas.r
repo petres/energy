@@ -1,13 +1,13 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('load/entsoe/_shared.r')
+source("load/entsoe/_shared.r")
 # loadPackages()
 
 
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
-    type = 'generation', month.start = month.start, month.end = month.end,
-    # type = 'generation', month.start = "2022-07", month.end = "2022-08", check.updates = FALSE
+    type = "generation", month.start = month.start, month.end = month.end,
+    # type = "generation", month.start = "2022-07", month.end = "2022-08", check.updates = FALSE
 )
 
 # Filter, Aggregate
@@ -16,8 +16,8 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M" & ProductionType
 ), by = .(date = as.Date(DateTime))][order(date)]
 
 # Save
-fwrite(d.agg, file.path(g$d$o, 'generation-gas.csv'))
-# d.agg = loadData(file.path(g$d$o, 'generation-gas.csv'))
+fwrite(d.agg, file.path(g$d$o, "generation-gas.csv"))
+# d.agg = loadData(file.path(g$d$o, "generation-gas.csv"))
 
 # Delete last (most probably incomplete) obs
 d.agg = removeLastDays(d.agg, 2)
@@ -29,5 +29,5 @@ d.plot = meltAndRemove(d.agg)
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'electricity/generation', 'data-gas.csv'))
+fwrite(d.plot, file.path(g$d$wd, "electricity", "generation-gas.csv"))
 

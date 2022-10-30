@@ -1,6 +1,6 @@
 {
     "parent": "/data/shared-base.json",
-    "data": "data-int.csv",
+    "data": "load-international.csv",
     "options": {
         "height": 200,
         "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},

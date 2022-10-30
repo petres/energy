@@ -1,6 +1,6 @@
 {
     "parent": "/data/shared-base.json",
-    "data": "data-facets.csv",
+    "data": "generation-facets.csv",
     "options": {
         "height": 200,
         "margins": {"top": 0, "right": 15, "bottom": 35, "left": 40},

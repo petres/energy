@@ -1,0 +1,14 @@
+{
+    "parent": "/data/shared-base.json",
+    "data": "storage.csv",
+    "options": {
+        "title": "Speicherfüllstand",
+        "subtitle": "in TWh",
+        "footer": "Source: GIE – Gas Infrastructure Europe"
+    },
+    "mapping": {
+        "y": {
+            "column": "value"
+        }
+    }
+}

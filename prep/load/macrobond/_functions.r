@@ -1,6 +1,6 @@
 getMacrobondData = function (cols, frequency = NULL, startdate = NULL) {
     seriesRequest <- CreateUnifiedTimeSeriesRequest()
-    for (i in 1:length(cols)) {
+    for (i in seq_len(length(cols))) {
         if (!is.null(frequency)) {
             setFrequency(seriesRequest, frequency[1])
         }

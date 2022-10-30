@@ -1,6 +1,6 @@
 {
     "parent": "/data/shared-base.json",
-    "data": "price-daily.csv",
+    "data": "price.csv",
     "options": {
         "title": "Strompreis",
         "subtitle": "Spotmarkt, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",

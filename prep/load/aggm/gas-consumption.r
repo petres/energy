@@ -42,7 +42,7 @@ d.plot = meltAndRemove(d.plot)
 dates2PlotDates(d.plot)
 
 # Save plot data
-fwrite(d.plot, file.path(g$d$wd, 'gas/consumption', 'data-aggm.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'gas', 'consumption-aggm.csv'))
 
 # Save full for reg
 d.historic = fread(historic.data.file)[, `:=`(date = as.Date(date))]

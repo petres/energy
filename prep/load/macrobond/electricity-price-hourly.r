@@ -1,6 +1,6 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('load/macrobond/_shared.r')
+source("load/macrobond/_shared.r")
 loadPackages(stringi)
 
 
@@ -58,14 +58,14 @@ loadPackages(stringi)
 d.vars = data.table(
     hour = 0:23
 )
-d.vars[, id := paste0('atelspot', stri_pad(0:23, width = 2, pad = "0"))]
+d.vars[, id := paste0("atelspot", stri_pad(0:23, width = 2, pad = "0"))]
 
 d.raw = getMacrobondData(d.vars$id)
 d = melt(d.raw, id.vars = "date")
 
 d.m = merge(d, d.vars, by.x = "variable", by.y ="id")
 if (FALSE) {
-    fwrite(d.m[date >= '2019-01-01'][, .(date, hour, price = value)], file.path(g$d$o, 'price-electricity-hourly.csv'))
+    fwrite(d.m[date >= "2019-01-01"][, .(date, hour, price = value)], file.path(g$d$o, "price-electricity-hourly.csv"))
 }
 d.m[, year := year(date)]
 
@@ -75,5 +75,4 @@ d.plot = d.m[year > 2018, .(
 
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'electricity', 'price-hourly.csv'))
-
+fwrite(d.plot, file.path(g$d$wd, "electricity", "price-hourly.csv"))

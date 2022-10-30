@@ -1,6 +1,6 @@
 {
     "parent": "/data/shared-facet.json",
-    "data": "data-gas.csv",
+    "data": "generation-gas.csv",
     "options": {
         "title": "Stromproduktion aus Gas",
         "subtitle": "in TWh",

@@ -1,5 +1,5 @@
 {
-    "data": "data-eua.csv",
+    "data": "eua.csv",
     "parent": "/data/shared-base.json",
     "options": {
         "title": "EUA Future",

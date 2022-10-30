@@ -1,13 +1,13 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('load/entsoe/_shared.r')
+source("load/entsoe/_shared.r")
 # loadPackages()
 
 
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
-    type = 'generation', month.start = "2022-07", month.end = "2022-07", check.updates = FALSE
-    # type = 'generation', month.start = month.start, month.end = month.end
+    type = "generation", month.start = "2022-07", month.end = "2022-07", check.updates = FALSE
+    # type = "generation", month.start = month.start, month.end = month.end
 )
 
 # d.base[, .(sum = sum(ActualGenerationOutput)), by=.(ProductionType)][order(sum)]
@@ -21,8 +21,8 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M", .(
 d.agg = d.agg[year >= 2019]
 
 # Save
-fwrite(d.agg, file.path(g$d$o, 'generation-hourly.csv'))
-# d.agg = fread(file.path(g$d$o, 'generation.csv'))
+fwrite(d.agg, file.path(g$d$o, "generation-hourly.csv"))
+# d.agg = fread(file.path(g$d$o, "generation.csv"))
 
 # Group
 nameOthers = "others"
@@ -38,4 +38,4 @@ c.order = c(c.order[c.order != nameOthers], nameOthers)
 d.agg.group[, source.group := factor(source.group, c.order, c.order)]
 d.agg.group = d.agg.group[order(year, hour, source.group)]
 
-fwrite(d.agg.group, file.path(g$d$wd, 'electricity/generation', 'data-hourly.csv'))
+fwrite(d.agg.group, file.path(g$d$wd, "electricity", "generation-hourly.csv"))

@@ -1,12 +1,12 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('load/entsoe/_shared.r')
+source("load/entsoe/_shared.r")
 # loadPackages()
 
 # - DOIT -----------------------------------------------------------------------
 d.base = loadEntsoeComb(
-    type = 'load', month.start = month.start, month.end = month.end
-    # type = 'load', month.start = "2022-02", month.end = "2022-06", check.updates = FALSE
+    type = "load", month.start = month.start, month.end = month.end
+    # type = "load", month.start = "2022-02", month.end = "2022-06", check.updates = FALSE
 )
 
 # Filter, Aggregate
@@ -18,7 +18,7 @@ d.agg = d.base[AreaName == "AT CTY", .(
 d.agg = removeLastDays(d.agg, 2)
 
 # Save
-fwrite(d.agg, file.path(g$d$o, 'load.csv'))
+fwrite(d.agg, file.path(g$d$o, "load.csv"))
 
 # Plot, Preparation
 addRollMean(d.agg, 7)
@@ -27,5 +27,5 @@ d.plot = meltAndRemove(d.agg)
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'electricity/load', 'data.csv'))
+fwrite(d.plot, file.path(g$d$wd, "electricity", "load.csv"))
 

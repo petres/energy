@@ -1,6 +1,6 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('_shared.r')
+source("_shared.r")
 
 d.base <- fread("data/output/heating-degree-days.csv")
 
@@ -15,7 +15,7 @@ addCum(d.hdd)
 d.plot = meltAndRemove(d.hdd)
 dates2PlotDates(d.plot)
 
-fwrite(d.plot, file.path(g$d$wd, 'heating-degree-days', 'hdd.csv'))
+fwrite(d.plot, file.path(g$d$wd, "others", "hdd.csv"))
 
 # d.plot = fread(file.path(g$d$wd, 'heating-degree-days', 'hdd.csv'))
 # d.hdd = d.plot[variable == 'value', .(date, value)]
