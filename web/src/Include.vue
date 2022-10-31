@@ -1,12 +1,12 @@
 <template>
     <div id="include">
         <div v-for="v in vis" class="entry">
-            <a :href="url(v.id)" target="_blank">{{ v.id }}</a>
+            <a :href="url(v)" target="_blank">{{ v }}</a>
             <div class="code">
                 Code:
-                <pre>{{ iframe(v.id) }}</pre>
+                <pre>{{ iframe(v) }}</pre>
             </div>
-            <div v-html="iframe(v.id)"/>
+            <div v-html="iframe(v)"/>
         </div>
     </div>
 </template>
@@ -15,6 +15,12 @@
 
 // const urlSingle = "/single/";
 const urlSingle = "https://energy.abteil.org/single/";
+
+import { collections } from '@/globals.js';
+
+const vis = [...new Set(Object.values(collections).map(v => v.vis).flat())]
+// console.log(vis)
+
 
 export default {
     methods: {
@@ -29,10 +35,7 @@ export default {
         }
     },
     data: () => ({
-        vis: [
-            { id: "gas/def-price" },
-            { id: "def-pred-gas-cons" },
-        ]
+        vis: vis
     }),
 }
 </script>

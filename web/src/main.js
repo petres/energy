@@ -23,8 +23,7 @@ const routes = Object.entries(collections).map(([k, c]) => (
 );
 
 routes[0].alias = '/';
-
-console.log(routes)
+// console.log(routes)
 
 const router = createRouter({
     history: createWebHistory(),

@@ -46,12 +46,13 @@ body {
 .menu {
     text-align: center;
     font-size: 13px;
+    padding: 8px 0;
     .title {
         padding-right: 10px;
     }
     .entry {
         display: inline-block;
-        padding: 10px 6px;
+        padding: 2px 6px;
         
         a {
             &.router-link-active {
