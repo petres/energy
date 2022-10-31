@@ -11,8 +11,6 @@ import Single from '@/Single.vue'
 import Include from '@/Include.vue'
 import Collection from '@/Collection.vue'
 
-
-
 const routes = Object.entries(collections).map(([k, c]) => (
     { path: `/${k}`, component: Collection, name: `collection-${k}` }
 )).concat(
