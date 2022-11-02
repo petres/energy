@@ -1,25 +1,62 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source("_shared.r")
+source('_shared.r')
 
-d.base <- fread("data/output/heating-degree-days.csv")
 
-d.hdd = d.base[, .(
-    date = as.Date(time),
-    value = `0`
+# - CONF -----------------------------------------------------------------------
+v.raumtemp = 20
+v.heiztremp = 12
+
+
+# - LOAD/PREPARE ---------------------------------------------------------------
+d.pop.raw = fread(file.path(g$d$era5, "pop.csv"))
+d.pop = d.pop.raw[!is.na(value), .(
+    latitude, longitude, pop = value
 )]
 
-addRollMean(d.hdd, 28)
-addCum(d.hdd)
+d.temp.raw = fread(file.path(g$d$era5, "temp.csv"))
+d.temp = d.temp.raw[!is.na(t2m)]
 
-d.plot = meltAndRemove(d.hdd)
+# CHECK expver, REMOVE expver
+# d.temp[, diff := length(unique(t2m)) > 1, by=.(time, latitude, longitude)]
+d.temp = d.temp[, .(temp = t2m[1]),  by=.(time, latitude, longitude)]
+
+
+# - HDD ------------------------------------------------------------------------
+d.temp[, hdd := ifelse(temp <= 12, v.raumtemp - temp, 0)]
+
+
+# - MERGE/AGG ------------------------------------------------------------------
+d.comb = merge(d.temp, d.pop, by=c("latitude", "longitude"))
+# d.comb[, sum(pop), by=.(time)]
+
+d.austria = d.comb[, .(
+    temp = sum(temp*pop),
+    hdd = sum(hdd*pop)
+), by=.(date = time)]
+
+d.vienna = d.comb[latitude == 48.25 & longitude == 16.25, .(
+    date = time, temp.vienna = temp, hdd.vienna = temp
+)]
+
+d.final = merge(d.austria, d.vienna, by = 'date')
+
+# - SAVE -----------------------------------------------------------------------
+fwrite(d.final, file.path(g$d$o, 'temp-hdd.csv'))
+
+
+# - SAVE FOR PLOT --------------------------------------------------------------
+d.plot = d.final[, .(
+    date = as.Date(date), value = hdd
+)]
+
+addRollMean(d.plot, 28)
+addCum(d.plot)
+
+d.plot = meltAndRemove(d.plot)
 dates2PlotDates(d.plot)
 
 fwrite(d.plot, file.path(g$d$wd, "others", "hdd.csv"))
-
-# d.plot = fread(file.path(g$d$wd, 'heating-degree-days', 'hdd.csv'))
-# d.hdd = d.plot[variable == 'value', .(date, value)]
-
 
 ####test using ggplot
 # loadPackages(tidyverse)
@@ -28,5 +65,3 @@ fwrite(d.plot, file.path(g$d$wd, "others", "hdd.csv"))
 #    ggplot(aes(x=day, y=value)) +
 #    geom_line(aes(col=as.character(year))) +
 #    facet_wrap(.~variable,scale="free")
-#
-#

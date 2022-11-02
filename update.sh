@@ -9,16 +9,16 @@ cd prep
 
 # - TEMP/HEATING DAYS
 python3 load/era5/downloadExtractFull.py
-Rscript calc/hdd-new.r
+Rscript calc/hdd.r
 Rscript calc/prediction-gas-consumption/linearModel1.r
 
 # - GAS
-# Obsolete, gas consumption is now obtained from AGGM 
+# Obsolete, gas consumption is now obtained from AGGM
 # Rscript load/econtrol-gas-consumption.r
 Rscript load/aggm/gas-consumption.r
 Rscript load/gie-storage.r
 
-# - ELECTRICITY 
+# - ELECTRICITY
 Rscript load/entsoe/load.r
 Rscript load/entsoe/generation.r
 Rscript load/entsoe/generation-hourly.r
