@@ -20,6 +20,7 @@ Rscript load/gie-storage.r
 
 # - ELECTRICITY
 Rscript load/entsoe/load.r
+Rscript load/entsoe/load-int.r
 Rscript load/entsoe/generation.r
 Rscript load/entsoe/generation-hourly.r
 Rscript load/entsoe/generation-facets.r
