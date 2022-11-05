@@ -41,8 +41,6 @@ loadGieDataAllPages = function(date = Sys.Date(), country = "AT"){
 d.base = loadGieDataAllPages()
 d.base = rbind(d.base, loadGieDataAllPages(country = "EU"))
 
-d.base %>%
-    ggplot(aes(x=))
 
 # Save
 saveRDS(d.base.at, file.path(g$d$o, "storage.at.rData"))
