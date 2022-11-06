@@ -18,7 +18,7 @@ DATA_FOLDER = ROOT_PATH/config['d']['era5']
 CLIMATE_FOLDER = DATA_FOLDER/"climate"
 
 START_YEAR = 2012
-DELAY_DAYS = 5
+DELAY_DAYS = 6
 
 RENEW_CURRENT_YEAR = False
 
@@ -58,7 +58,7 @@ def download_era5_temperature_years(years, folder):
 def download_era5_temperature_last_year(until, folder):
     north, west, south, east = 50.,8, 45, 18
     day, month, year = (until.day, until.month, until.year)
-
+    
     filename = folder/'last_year.nc' 
     if not os.path.exists(filename):
         options = {
@@ -70,7 +70,7 @@ def download_era5_temperature_last_year(until, folder):
     filename = folder/'last_month.nc' 
     if not os.path.exists(filename):
         options = {
-            'day': [f"{day:02d}" for day in range(1, day)],
+            'day': [f"{day:02d}" for day in range(1, day + 1)],
             'month': [f"{month:02d}"],
             'year': [str(year)],
         }
