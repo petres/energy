@@ -22,19 +22,6 @@
         }
     },
     "plot": {
-        "type": "svg:path",
-        "categories": ["year"],
-        "props": {
-            "stroke-width": "@stroke-width",
-            "fill": "none",
-            "opacity": "@opacity",
-            "stroke": "@color",
-            "d": {
-                "x": "@x:scaled",
-                "y": "@y:scaled"
-            },
-            "highlight-opacity": 1,
-            "highlight-stroke-width": 3
-        }
+        "categories": ["year"]
     }
 }

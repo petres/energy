@@ -52,17 +52,34 @@
             },
             "props": {
                 "common": {
-                    "opacity": 0.7,
-                    "stroke-width": 2
+                    "stroke-width": 2,
+                    "highlight-stroke-width": 3,
+                    "opacity": 0.9, 
+                    "highlight-opacity": 1
                 },
                 "manual": {
-                    "2019": { "color": "#f3d039" },
-                    "2020": { "color": "#96b428" },
-                    "2021": { "color": "#12a7e7" },
-                    "2022": { "color": "#c3423f", "opacity": 1 }
+                    "2019": { "color": "#f3d039"},
+                    "2020": { "color": "#b5c969"},
+                    "2021": { "color": "#86cae7"},
+                    "2022": { "color": "#c3423f", "opacity": 1}
                 }
             },
             "hover": {}
         }
-    }
+    },
+    "plot": {
+        "type": "svg:path",
+        "props": {
+            "stroke-width": "@stroke-width",
+            "fill": "none",
+            "opacity": "@opacity",
+            "stroke": "@color",
+            "d": {
+                "x": "@x:scaled",
+                "y": "@y:scaled"
+            },
+            "highlight-opacity": "@highlight-opacity",
+            "highlight-stroke-width": "@highlight-stroke-width"
+        }
+}
 }
