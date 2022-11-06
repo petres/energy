@@ -34,7 +34,8 @@ const collections = {
             "electricity/price",
             "gas/consumption-aggm",
             "gas/price",
-            "gas/storage",
+            "gas/storage-AT",
+            // "gas/storage",
             "electricity/generation-gas",
             "electricity/generation",
             "electricity/generation-facets",
@@ -59,7 +60,7 @@ const collections = {
             "gas/consumption-aggm",
             "others/hdd",
             "gas/price",
-            "gas/storage",
+            "gas/storage-AT",
         ]
     }, 
     electricity: {
@@ -77,6 +78,7 @@ const collections = {
         menu: true,
         vis: [
             "electricity/load-international",
+            "gas/storage-EU",
         ]
     }, 
     test: {

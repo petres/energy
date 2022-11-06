@@ -16,7 +16,7 @@ Rscript calc/prediction-gas-consumption/linearModel1.r
 # Obsolete, gas consumption is now obtained from AGGM
 # Rscript load/econtrol-gas-consumption.r
 Rscript load/aggm/gas-consumption.r
-Rscript load/gie-storage.r
+Rscript load/gie/detailed.r
 
 # - ELECTRICITY
 Rscript load/entsoe/load.r

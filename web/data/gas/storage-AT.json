@@ -1,0 +1,74 @@
+{
+    "data": "storage-AT.csv",
+    "options": {
+        "title": "Gasspeicher",
+        "subtitle": "in TWh",
+        "footer": "Source: GIE – Gas Infrastructure Europe"
+    },
+    "parent": "/data/shared.json",
+    "mapping": {
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domainRel": [-0.1, 0.1],
+                "orientation": "vertical"
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.1f"
+            }
+        },
+        "type": {
+            "column": "type",
+            "props": {
+                "manual": {
+                    "stock": {
+                        "name": "Speicherstand, täglich",
+                        "stroke-width": 2,
+                        "highlight-stroke-width": 3
+                    },
+                    "flow": {
+                        "name": "Veränderung, 7-Tages Differenz",
+                        "stroke-width": 2,
+                        "highlight-stroke-width": 3
+                    }
+                }
+            }
+        }
+    },
+    "facets": {
+        "dim": ["type"],
+        "scales": [],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 850, "value": 2}
+            ]
+        }
+    },
+    "plot": {
+            "type": "svg:path",
+            "categories": ["year", "type"],
+            "props": {
+                "stroke-width": "@stroke-width",
+                "fill": "none",
+                "opacity": "@opacity",
+                "stroke": "@color",
+                "d": {
+                    "x": "@x:scaled",
+                    "y": "@y:scaled"
+                },
+                "highlight-opacity": 1,
+                "highlight-stroke-width": "@highlight-stroke-width"
+            }
+    }
+}
