@@ -17,7 +17,7 @@ config = getConfig()
 DATA_FOLDER = ROOT_PATH/config['d']['era5']
 CLIMATE_FOLDER = DATA_FOLDER/"climate"
 
-START_YEAR = 2012
+START_YEAR = 1950
 DELAY_DAYS = 6
 
 RENEW_CURRENT_YEAR = False
