@@ -20,7 +20,7 @@ d.base.f[, factor := resToFactor[ResolutionCode]]
 
 # - AGG -----------------------------------------------------------------------
 d.agg = d.base.f[, .(
-    value = sum(ActualGenerationOutput)/10^6*factor
+    value = sum(ActualGenerationOutput*factor)/10^6
 ), by = .(
     country = MapCode,
     date = as.Date(DateTime),
