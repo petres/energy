@@ -3,7 +3,7 @@ options(repos = "https://cran.wu.ac.at/")
 if (!'librarian' %in% rownames(installed.packages())) install.packages("librarian")
 loadPackages = librarian::shelf
 loadPackages(
-    'data.table', 'zoo', 'glue', 'lubridate', 'jsonlite', 'httr', 'xml2'
+    'data.table', 'zoo', 'glue', 'lubridate', 'jsonlite', 'httr', 'xml2', 'googledrive'
 )
 
 # - GLOB -----------------------------------------------------------------------

@@ -2,10 +2,6 @@
 rm(list = ls())
 source("load/gie/_shared.r")
 
-
-loadPackages(googledrive)
-
-
 # - DOIT -----------------------------------------------------------------------
 countries = c("AT", "EU")
 
