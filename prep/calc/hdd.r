@@ -41,31 +41,10 @@ d.vienna = d.comb[latitude == 48.25 & longitude == 16.25, .(
 
 d.final = merge(d.austria, d.vienna, by = 'date')
 
+
 # - SAVE -----------------------------------------------------------------------
 saveToStorages(d.final, list(
     id = "temperature-hdd",
     source = "era5",
     format = "csv"
 ))
-
-
-# - SAVE FOR PLOT --------------------------------------------------------------
-d.plot = d.final[, .(
-    date = as.Date(date), value = hdd
-)]
-
-addRollMean(d.plot, 28)
-addCum(d.plot)
-
-d.plot = meltAndRemove(d.plot)
-dates2PlotDates(d.plot)
-
-fwrite(d.plot, file.path(g$d$wd, "others", "hdd.csv"))
-
-####test using ggplot
-# loadPackages(tidyverse)
-# d.plot %>%
-#    filter(year>2018) %>%
-#    ggplot(aes(x=day, y=value)) +
-#    geom_line(aes(col=as.character(year))) +
-#    facet_wrap(.~variable,scale="free")

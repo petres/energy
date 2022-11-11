@@ -24,14 +24,3 @@ saveToStorages(d.final, list(
     source = "econtrol",
     format = "csv"
 ))
-
-
-# - PLOT -----------------------------------------------------------------------
-# Prepare
-addRollMean(d.final, 7)
-addCum(d.agg)
-d.plot = meltAndRemove(d.agg)
-dates2PlotDates(d.plot)
-
-# Save
-fwrite(d.plot[date >= '2019-01-01'], file.path(g$d$wd, 'gas', 'consumption-econtrol.csv'))

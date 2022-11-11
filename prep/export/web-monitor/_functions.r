@@ -21,7 +21,7 @@ dates2PlotDates = function(d) {
     year(c.date20) = 2020
 
     d[, `:=`(
-        day = yday(date),
+        # day = yday(date),
         year = year(date),
         date20 = c.date20
     )]

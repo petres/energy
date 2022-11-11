@@ -3,7 +3,7 @@
     "parent": "/data/shared-facet.json",
     "options": {
         "title": "Heizgradtage",
-        "subtitle": "Raumtemperatur 20 °C, Heizgrenze 12 °C, gewichtet mit Bevölkerung",
+        "subtitle": "Raumtemperatur 20 °C, Heizgrenze 12 °C, gewichtet nach Bevölkerung",
         "footer": "Source: Regionale Temperaturen von ERA5"
     },
     "mapping": {

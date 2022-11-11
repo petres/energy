@@ -26,9 +26,28 @@ saveToStorages = function(data, meta, storages = c("local", "googledrive")) {
     }
 }
 
-# loadFromStorages = function(types, id) {
-#
-# }
+loadFromStorage = function(id, format = 'csv', storage = "googledrive") {
+    format = 'csv'
+    id = "temperature-hdd"
+    fileName = glue("{id}.{format}")
+
+    if (format == 'csv') {
+        fileReadFunction = function(f) fread(f)
+    } else {
+        stop(glue("Format type '{format}' not implemented!"))
+    }
+
+    if (storage == "local") {
+        file = file.path(g$d$storage, fileName)
+        return(fileReadFunction(file))
+    } else if (storage == "googledrive") {
+        file = tempfile()
+        drive_download(file.path(g$googledrive, fileName), file)
+        return(fileReadFunction(file))
+    } else {
+        stop(glue("Storage type '{storage}' not implemented!"))
+    }
+}
 
 
 uploadGoogleDrive = function(file, fileName) {

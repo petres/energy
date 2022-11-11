@@ -59,6 +59,7 @@ const collections = {
         vis: [
             "gas/consumption-aggm",
             "others/hdd",
+            "others/temperature",
             "gas/price",
             "gas/storage-AT",
         ]

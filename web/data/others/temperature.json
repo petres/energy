@@ -1,0 +1,25 @@
+{
+    "data": "temperature.csv",
+    "parent": "/data/shared-base.json",
+    "options": {
+        "title": "Temperatur Österreich",
+        "subtitle": "gewichtet nach Bevölkerung, täglich (rollierender 4-Wochen Durchschnitt), in °C",
+        "footer": "Source: ERA5"
+    },
+    "mapping": {
+        "y": {
+            "column": "value",
+            "scale": {
+                "domain": [null, null],
+                "domainRel": [-0.1, 0.1]
+            }
+        },
+        "year": {
+            "props": {
+                "manual": {
+                    "avg50-18": { "color": "#444", "name": "Ø 1950 - 2018"}
+                }
+            }
+        }
+    }
+}
