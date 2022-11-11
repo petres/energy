@@ -24,6 +24,7 @@ Rscript load/entsoe/generation.r
 Rscript load/entsoe/generation-hourly.r
 Rscript load/entsoe/generation-facets.r
 Rscript load/entsoe/generation-gas.r
+Rscript load/entsoe/generation-int.r
 
 cd ..
 
