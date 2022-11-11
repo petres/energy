@@ -3,7 +3,7 @@ loadPackages(
 )
 
 saveToStorages = function(data, meta, storages = c("local", "googledrive")) {
-    fileName = glue("{meta$id}-{meta$source}.{meta$format}")
+    fileName = glue("{meta$id}.{meta$format}")
     if (meta$format == 'csv') {
         fileWriteFunction = function(d, f) fwrite(d, f)
     } else {
