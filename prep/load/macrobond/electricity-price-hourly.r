@@ -66,7 +66,7 @@ d = melt(d.raw, id.vars = "date")
 d.m = merge(d, d.vars, by.x = "variable", by.y ="id")
 
 # - STORAGE --------------------------------------------------------------------
-saveToStorages(d.m[order(year, hour)], list(
+saveToStorages(d.m[order(date, hour)], list(
     id = "price-electricity-hourly",
     source = "macrobond",
     format = "csv"
