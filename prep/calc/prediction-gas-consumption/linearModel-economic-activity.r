@@ -40,7 +40,7 @@ rel.growth = growth.rate(d.economic.activity)
 d.comb = d.comb[, economic.activity.estimate := ifelse(is.na(economic.activity), "Naiver Schätzer", "Statistik\nAustria"), ]
 d.comb = d.comb[, economic.activity := ifelse(is.na(economic.activity), rel.growth * lag(economic.activity, 365), economic.activity), ]
 
-.# d.comb[, `:=`(
+# d.comb[, `:=`(
 #     temp = temp.vienna,
 #     hdd = hdd.vienna
 # )]

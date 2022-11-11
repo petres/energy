@@ -21,5 +21,7 @@ loadGieFull = function(country, startDate = "2018-12-01", endDate = Sys.Date()) 
             break;
         page = page + 1
     }
-    as.data.table(d.base)
+    d = as.data.table(d.base)
+    d[, info := NULL]
+    d
 }

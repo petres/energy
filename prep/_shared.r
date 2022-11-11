@@ -34,6 +34,10 @@ rm(creds)
 
 
 # - HELPERS --------------------------------------------------------------------
+uploadGoogleDrive = function(file, path = "") {
+    drive_put(file, path = file.path(g$googledrive, path))
+}
+
 addRollMean = function(d, l, g = character(0)) {
     d[, (paste0('rm', l)) := rollmean(value, l, fill = NA, align = "right"), by=c(g)]
 }

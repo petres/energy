@@ -1,5 +1,5 @@
 # load economic activity
-library(readODS)
+loadPackages(readODS)
 
 read.economic.activity = function(){
     url <- "https://www.statistik.at/fileadmin/pages/189/PI2015_BDL.ods"
@@ -8,7 +8,6 @@ read.economic.activity = function(){
     d.economic.activity <- readODS::read_ods(f) %>%
         as_tibble(.name_repair = "unique")
     unlink(f)
-
 
     names(d.economic.activity)[1] = "year"
     names(d.economic.activity)[2] = "month"
@@ -22,8 +21,6 @@ read.economic.activity = function(){
         mutate(economic.activity = as.numeric(economic.activity)) %>%
         dplyr::select(year, month, economic.activity) %>%
         na.omit()
-
-
 }
 
 ### the economic indicator is published at monthly resolution, t + 45 days

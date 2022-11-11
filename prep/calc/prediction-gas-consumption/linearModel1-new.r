@@ -1,6 +1,7 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
 source('_shared.r')
+source('calc/prediction-gas-consumption/_functions.r')
 loadPackages(stringr, tidyverse)
 
 
@@ -27,6 +28,8 @@ d.holidays = fread(file.path(g$d$o, 'holidays.csv'))[, `:=`(
 d.comb = merge(d.consumption, d.hdd, by = "date")
 d.comb = merge(d.comb, d.holidays, by = "date")
 
+
+d.economic.activity = read.economic.activity()
 # d.comb[, `:=`(
 #     temp = temp.vienna,
 #     hdd = hdd.vienna
@@ -72,7 +75,7 @@ m.linear = lm(
         # value.lag + value.lag2 + # AR TERMS
         temp + temp.squared + temp.15 + temp.15.squared + temp.15.lag +
         # temp * as.factor(temp.f) +
-        wday + is.holiday + as.factor(vacation.name)
+        wday + is.holiday + as.factor(vacation.name) + as.factor(month)
     , data = d.train)
 
 summary(m.linear)
@@ -119,3 +122,4 @@ d.month[, diff := prediction - value]
 
 
 ggplot(d.month, aes(x = as.Date(glue("{year}-{month}-15")), y = diff)) + geom_line()
+

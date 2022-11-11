@@ -1,13 +1,13 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('_shared.r')
+source("_shared.r")
 # loadPackages()
 
 
 # - DOIT -----------------------------------------------------------------------
 # Load
-l.base = read_json(file.path(g$d$o, 'gas-price.json'))
-sapply(l.base, `[[`, 'name')
+l.base = read_json(file.path(g$d$o, "gas-price.json"))
+sapply(l.base, `[[`, "name")
 
 date = sapply(l.base[[4]]$data, `[[`, 1)
 price = sapply(l.base[[4]]$data, `[[`, 2)
@@ -44,5 +44,5 @@ d.raw = data.table(date = as.Date(as_datetime(date/1000)), price = unlist(price)
 d.plot = prepData(d.raw)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'gas', 'price.csv'))
-fwrite(d.raw, file.path(g$d$o, 'price-gas.csv'))
+fwrite(d.plot, file.path(g$d$wd, "gas", "price.csv"))
+fwrite(d.raw, file.path(g$d$o, "price-gas.csv"))

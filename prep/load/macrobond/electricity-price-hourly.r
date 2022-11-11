@@ -64,9 +64,13 @@ d.raw = getMacrobondData(d.vars$id)
 d = melt(d.raw, id.vars = "date")
 
 d.m = merge(d, d.vars, by.x = "variable", by.y ="id")
-if (FALSE) {
-    fwrite(d.m[date >= "2019-01-01"][, .(date, hour, price = value)], file.path(g$d$o, "price-electricity-hourly.csv"))
-}
+
+
+file = file.path(g$d$o, "price-electricity-hourly.csv")
+fwrite(d.m[date >= "2019-01-01"][, .(date, hour, price = value)], file)
+uploadGoogleDrive(file)
+
+
 d.m[, year := year(date)]
 
 d.plot = d.m[year > 2018, .(

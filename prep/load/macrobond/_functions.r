@@ -24,7 +24,9 @@ getPrepMacrobondData = function(c.series, name = NULL) {
     setnames(d.raw, names(c.series), c.series)
 
     if (!is.null(name)) {
-        fwrite(d.raw, file.path(g$d$o, glue("{name}.csv")))
+        file = file.path(g$d$o, glue("{name}.csv"))
+        fwrite(d.raw, file)
+        uploadGoogleDrive(file)
     }
 
     prepData(d.raw)

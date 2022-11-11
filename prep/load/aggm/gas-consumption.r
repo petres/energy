@@ -6,6 +6,11 @@ source('load/aggm/_shared.r')
 # - CONF -----------------------------------------------------------------------
 historic.data.file = file.path(g$d$o, 'consumption-gas-aggm-historic.csv')
 if (!file.exists(historic.data.file)) {
+    d.historic = getGasConsumption('2018-12-30', '2022-01-02')
+    d.t0 = d.historic[, .(
+        value = sum(value)/10^9
+    ), by=.(date = as.Date(from))][year(date) %in% 2019:2021]
+
     d.historic = getGasConsumption('2015-12-30', '2019-01-02')
     d.t1 = d.historic[, .(
         value = sum(value)/10^9
@@ -16,16 +21,12 @@ if (!file.exists(historic.data.file)) {
         value = sum(value)/10^9
     ), by=.(date = as.Date(from))][year(date) %in% 2013:2015]
 
-    fwrite(rbind(d.t1, d.t2)[order(date)][!is.na(value)], historic.data.file)
-    rm(d.historic, d.t1, d.t2)
+    fwrite(rbind(d.t0, d.t1, d.t2)[order(date)][!is.na(value)], historic.data.file)
+    rm(d.historic, d.t0, d.t1, d.t2)
 }
-# fwrite(d.agg, file.path(g$d$o, 'consumption-gas-aggm-12.csv'))
-# d.agg = fread(file.path(g$d$o, 'consumption-gas-aggm.csv'))[, `:=`(
-#     date = as.Date(date)
-# )]
 
 
-d.base = getGasConsumption('2018-12-15')
+d.base = getGasConsumption('2021-12-30')
 
 # - AGG/SAVE -------------------------------------------------------------------
 d.agg = d.base[, .(
@@ -46,5 +47,9 @@ fwrite(d.plot, file.path(g$d$wd, 'gas', 'consumption-aggm.csv'))
 
 # Save full for reg
 d.historic = fread(historic.data.file)[, `:=`(date = as.Date(date))]
-d.full = rbind(d.historic, d.agg[date >= '2019-01-01'])
-fwrite(d.full, file.path(g$d$o, 'consumption-gas-aggm.csv'))
+d.full = rbind(d.historic, d.agg[date > max(d.historic$date)])
+
+
+file = file.path(g$d$o, 'consumption-gas-aggm.csv')
+fwrite(d.full, file)
+uploadGoogleDrive(file)
