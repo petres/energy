@@ -17,9 +17,6 @@ d.agg = d.base[AreaName == "AT CTY", .(
 # Delete last (most probably incomplete) obs
 d.agg = removeLastDays(d.agg, 2)
 
-# Save
-fwrite(d.agg, file.path(g$d$o, "load.csv"))
-
 # Plot, Preparation
 addRollMean(d.agg, 7)
 addCum(d.agg)

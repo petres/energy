@@ -7,6 +7,11 @@ loadPackages(
 month.start = "2018-12"
 month.end = substring(Sys.Date(), 1, 7)
 
+resToFactor = c(
+    "PT15M" = 1/4,
+    "PT30M" = 1/2,
+    "PT60M" = 1
+)
 
 c.sourceGroups1 = list(
     "Hydro"   = c("Hydro Run-of-river and poundage", "Hydro Water Reservoir", "Hydro Pumped Storage"),

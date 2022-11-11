@@ -20,9 +20,6 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M", .(
 
 d.agg = d.agg[year >= 2019]
 
-# Save
-fwrite(d.agg, file.path(g$d$o, "generation-hourly.csv"))
-# d.agg = fread(file.path(g$d$o, "generation.csv"))
 
 # Group
 nameOthers = "others"
@@ -37,5 +34,12 @@ c.order = c(c.order[c.order != nameOthers], nameOthers)
 
 d.agg.group[, source.group := factor(source.group, c.order, c.order)]
 d.agg.group = d.agg.group[order(year, hour, source.group)]
+
+# - STORAGE --------------------------------------------------------------------
+saveToStorages(d.agg.group, list(
+    id = "electricity-generation-hourly-year-g1",
+    source = "entsoe",
+    format = "csv"
+))
 
 fwrite(d.agg.group, file.path(g$d$wd, "electricity", "generation-hourly.csv"))

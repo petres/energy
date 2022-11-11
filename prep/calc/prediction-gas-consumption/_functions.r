@@ -1,28 +1,3 @@
-# load economic activity
-loadPackages(readODS)
-
-read.economic.activity = function(){
-    url <- "https://www.statistik.at/fileadmin/pages/189/PI2015_BDL.ods"
-    f <- tempfile()
-    download.file(url, dest=f)
-    d.economic.activity <- readODS::read_ods(f) %>%
-        as_tibble(.name_repair = "unique")
-    unlink(f)
-
-    names(d.economic.activity)[1] = "year"
-    names(d.economic.activity)[2] = "month"
-    names(d.economic.activity)[3] = "economic.activity"
-
-    d.economic.activity %>%
-        slice_tail(n= -10) %>%
-        fill(year) %>%
-        mutate(month = as.numeric(as.roman(str_replace(month, "\\.", "")))) %>%
-        mutate(year = as.numeric(year)) %>%
-        mutate(economic.activity = as.numeric(economic.activity)) %>%
-        dplyr::select(year, month, economic.activity) %>%
-        na.omit()
-}
-
 ### the economic indicator is published at monthly resolution, t + 45 days
 ### to be able to predict up to the current moment,
 ### I do a very dirty prediction of the economic indicator:

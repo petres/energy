@@ -15,17 +15,23 @@ d.agg = d.base[, .(
 )][, .(value = sum(value)/10^6), by = date][order(date)]
 
 # Latest day, i.e. the first day of the new month, contains only 5 h and is therefore wrong.
-d.agg = d.agg[1:(nrow(d.agg) - 1), ]
+d.final = removeLastDays(d.agg)
 
 
-# Save
-fwrite(d.agg, file.path(g$d$o, 'consumption-gas.csv'))
+# - STORAGE --------------------------------------------------------------------
+saveToStorages(d.final, list(
+    id = "consumption-gas-econtrol",
+    source = "econtrol",
+    format = "csv"
+))
 
-# Plot, Preparation
-addRollMean(d.agg, 7)
+
+# - PLOT -----------------------------------------------------------------------
+# Prepare
+addRollMean(d.final, 7)
 addCum(d.agg)
 d.plot = meltAndRemove(d.agg)
 dates2PlotDates(d.plot)
 
 # Save
-fwrite(d.plot, file.path(g$d$wd, 'gas', 'consumption-econtrol.csv'))
+fwrite(d.plot[date >= '2019-01-01'], file.path(g$d$wd, 'gas', 'consumption-econtrol.csv'))

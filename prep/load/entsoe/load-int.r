@@ -17,11 +17,7 @@ d.base = loadEntsoeComb(
 d.base.f = d.base[AreaTypeCode == "CTY"]
 
 # sort(unique(d.base.f$ResolutionCode))
-resToFactor = c(
-    "PT15M" = 1/4,
-    "PT30M" = 1/2,
-    "PT60M" = 1
-)
+
 
 d.base.f[, factor := resToFactor[ResolutionCode]]
 d.base.f[, value := factor*TotalLoadValue]
@@ -32,10 +28,14 @@ d.agg = d.base.f[, .(
 ), by = .(country = MapCode, date = as.Date(DateTime))][order(date)]
 
 # Delete last (most probably incomplete) obs
-d.agg = removeLastDays(d.agg, 4)
+d.agg = removeLastDays(d.agg, 2)
 
-# Save
-fwrite(d.agg, file.path(g$d$o, "load-int.csv"))
+# - STORAGE --------------------------------------------------------------------
+saveToStorages(d.agg, list(
+    id = "electricity-load",
+    source = "entsoe",
+    format = "csv"
+))
 
 # Plot, Preparation
 

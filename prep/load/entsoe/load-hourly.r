@@ -28,8 +28,15 @@ d.agg = d[, .(
     value = mean(load)/10^3/4
 ), by = .(year = year(dateTime), hour = hour(dateTime))][year > 2018][order(year, hour)]
 
-ggplot(d.agg, aes(y = value, group = year, x = hour, color = year)) +
-    geom_line()
+# - STORAGE --------------------------------------------------------------------
+saveToStorages(d.agg, list(
+    id = "electricity-load-hourly-year",
+    source = "entsoe",
+    format = "csv"
+))
+
+# ggplot(d.agg, aes(y = value, group = year, x = hour, color = year)) +
+#     geom_line()
 
 # Save
 fwrite(d.agg, file.path(g$d$wd, "electricity", "load-hourly.csv"))

@@ -19,8 +19,6 @@ d.base = loadGieDataAllPages()
 d.base = rbind(d.base, loadGieDataAllPages(country = "EU"))
 
 
-# Save
-saveRDS(d.base.at, file.path(g$d$o, "storage.at.rData"))
 
 # Plot, Preparation
 d.plot = d.base[, .(

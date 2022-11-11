@@ -12,9 +12,9 @@ if (FALSE) {
     d.holidays = rbindlist(sapply(c.years, function(year) {
         fromJSON(glue("https://date.nager.at/api/v2/publicholidays/{year}/AT"))
     }, simplify = FALSE))
-    fwrite(d.holidays, file.path(g$d$o, 'holidays-raw.csv'))
+    fwrite(d.holidays, file.path(g$d$tmp, 'holidays-raw.csv'))
 }
-d.holidays = fread(file.path(g$d$o, 'holidays-raw.csv'))
+d.holidays = fread(file.path(g$d$tmp, 'holidays-raw.csv'))
 
 
 # - PREPARE --------------------------------------------------------------------
@@ -61,4 +61,9 @@ d.holidays[, `:=`(
     yday = NULL
 )]
 
-fwrite(d.holidays, file.path(g$d$o, 'holidays.csv'))
+# - STORAGE --------------------------------------------------------------------
+saveToStorages(d.holidays, list(
+    id = "holidays",
+    source = "nager",
+    format = "csv"
+))

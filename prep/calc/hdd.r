@@ -42,7 +42,11 @@ d.vienna = d.comb[latitude == 48.25 & longitude == 16.25, .(
 d.final = merge(d.austria, d.vienna, by = 'date')
 
 # - SAVE -----------------------------------------------------------------------
-fwrite(d.final, file.path(g$d$o, 'temp-hdd.csv'))
+saveToStorages(d.final, list(
+    id = "temperature-hdd",
+    source = "era5",
+    format = "csv"
+))
 
 
 # - SAVE FOR PLOT --------------------------------------------------------------

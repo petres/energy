@@ -65,18 +65,21 @@ d = melt(d.raw, id.vars = "date")
 
 d.m = merge(d, d.vars, by.x = "variable", by.y ="id")
 
+# - STORAGE --------------------------------------------------------------------
+saveToStorages(d.m[order(year, hour)], list(
+    id = "price-electricity-hourly",
+    source = "macrobond",
+    format = "csv"
+))
 
-file = file.path(g$d$o, "price-electricity-hourly.csv")
-fwrite(d.m[date >= "2019-01-01"][, .(date, hour, price = value)], file)
-uploadGoogleDrive(file)
 
-
+# - PLOT -----------------------------------------------------------------------
+# Prepare
 d.m[, year := year(date)]
 
-d.plot = d.m[year > 2018, .(
+d.plot = d.m[year >= 2019, .(
     value = mean(value)
 ), by=.(year, hour)][order(year, hour)]
-
 
 # Save
 fwrite(d.plot, file.path(g$d$wd, "electricity", "price-hourly.csv"))

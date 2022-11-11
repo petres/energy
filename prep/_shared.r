@@ -6,6 +6,8 @@ loadPackages(
     'data.table', 'zoo', 'glue', 'lubridate', 'jsonlite', 'httr', 'xml2', 'googledrive'
 )
 
+source("_storage.r")
+
 # - GLOB -----------------------------------------------------------------------
 g = modifyList(read_json("config.json"), list(
     entsoe = list(
@@ -34,10 +36,6 @@ rm(creds)
 
 
 # - HELPERS --------------------------------------------------------------------
-uploadGoogleDrive = function(file, path = "") {
-    drive_put(file, path = file.path(g$googledrive, path))
-}
-
 addRollMean = function(d, l, g = character(0)) {
     d[, (paste0('rm', l)) := rollmean(value, l, fill = NA, align = "right"), by=c(g)]
 }

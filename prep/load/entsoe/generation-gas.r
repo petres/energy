@@ -15,10 +15,6 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M" & ProductionType
     value = sum(ActualGenerationOutput)/4/10^6
 ), by = .(date = as.Date(DateTime))][order(date)]
 
-# Save
-fwrite(d.agg, file.path(g$d$o, "generation-gas.csv"))
-# d.agg = loadData(file.path(g$d$o, "generation-gas.csv"))
-
 # Delete last (most probably incomplete) obs
 d.agg = removeLastDays(d.agg, 2)
 

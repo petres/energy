@@ -18,16 +18,6 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M", .(
     value = sum(ActualGenerationOutput)/4/10^3
 ), by = .(date = as.Date(DateTime), source = ProductionType)][order(date)]
 
-# Save
-fwrite(d.agg, file.path(g$d$o, "generation-facets.csv"))
-if (FALSE) {
-    d.agg = fread(file.path(g$d$o, "generation-facets.csv"))
-    d.agg[, `:=`(
-        date = as.Date(d.agg$date),
-        value = value * 1000
-    )]
-}
-
 
 # Delete last (most probably incomplete) obs
 d.agg = removeLastDays(d.agg, 2)

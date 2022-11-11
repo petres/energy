@@ -2,8 +2,9 @@
     "d": {
         "entsoe": "data/entsoe",
         "era5": "data/era5",
-        "o": "data/output",
-        "wd": "../web/data"
+        "tmp": "data/tmp",
+        "wd": "../web/data",
+        "storage": "data/storage"
     },
     "f": {
         "creds": "creds.json"

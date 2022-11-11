@@ -23,8 +23,19 @@ d.base = d.raw[, .(
     gasOil = as.numeric(sub(',', '', `Gas.oil.automobile.Automotive.gas.oil.Dieselkraftstoff.(I)`))/1000
 )]
 
-d.plot = melt(d.base, id.vars = "date")[order(date), ]
-d.plot = d.plot[date > "2018-12-01"]
+d.full = melt(d.base, id.vars = "date")[order(date), ]
+
+
+# - STORAGE --------------------------------------------------------------------
+saveToStorages(d.full, list(
+    id = "price-gas-oil",
+    source = "ec",
+    format = "csv"
+))
+
+
+# - PLOT -----------------------------------------------------------------------
+d.plot = d.full[date > "2018-12-01"]
 
 # Fill missing dates
 d.plot = merge(

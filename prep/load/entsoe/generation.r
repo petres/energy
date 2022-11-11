@@ -18,9 +18,6 @@ d.agg = d.base[AreaName == "AT CTY" & ResolutionCode == "PT15M", .(
     value = sum(ActualGenerationOutput)/4/10^6
 ), by = .(date = {t = as.Date(DateTime); day(t) = 1; t}, source = ProductionType)][order(date)]
 
-# Save
-fwrite(d.agg, file.path(g$d$o, "generation.csv"))
-# d.agg = fread(file.path(g$d$o, "generation.csv"))
 
 # Group
 nameOthers = "others"
