@@ -5,7 +5,7 @@ body, text {
 body {
     max-width: 1200px;
     margin: 0 auto;
-    // background-color: #EEE;
+    background-color: hwb(51 99% 0%);
     overflow-y: overlay;
 }
 
@@ -13,7 +13,7 @@ body {
     text-align: center;
     position: relative;
     padding: 20px;
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid #BBB;
     h1 {
         // display: inline;
         font-size: 25px;
@@ -37,7 +37,7 @@ body {
         top: 28px;
         right: 15px;
         a {
-            background-color: #FFF;
+            background-color: transparent;
             border: none;
         }
     }
@@ -56,12 +56,12 @@ body {
         
         a {
             &.router-link-active {
-                background-color: white;
+                background-color: transparent;
                 color: black;
             }
         }
     }
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid #BBB;
 }
 
 a {
@@ -72,23 +72,23 @@ a {
     padding: 1px 4px 2px;
     border: 1px solid #222;
     &:hover {
-        background-color: #FFF;
+        background-color: transparent;
         color: #222;
     }
     border-radius: 4px;
 }
 
 h1 a {
-    background-color: #FFF;
+    background-color: transparent;
     color: #000;
     border: none;
 }
 
 
 .footer {
-    border-top: 1px solid #DDD;
+    border-top: 1px solid #BBB;
     text-align: center;
-    padding-top: 4px;
+    padding-top: 8px;
     padding-bottom: 4px;
     font-size: 11px;
     margin-bottom: 5px;

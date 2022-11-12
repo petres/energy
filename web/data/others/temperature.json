@@ -17,7 +17,7 @@
         "year": {
             "props": {
                 "manual": {
-                    "avg50-18": { "color": "#444", "name": "Ø 1950 - 2018"}
+                    "avg50-18": { "color": "#444", "name": "Ø&nbsp1950&nbsp-&nbsp2018"}
                 }
             }
         }

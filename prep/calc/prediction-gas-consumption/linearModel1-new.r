@@ -1,51 +1,19 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('_shared.r')
-source('calc/prediction-gas-consumption/_functions.r')
-loadPackages(stringr, tidyverse)
+source('calc/prediction-gas-consumption/_shared.r')
 
 
-# - DATA -----------------------------------------------------------------------
-# LOAD TEMP/HDD
-d.hdd = fread(file.path(g$d$o, 'temp-hdd.csv'))[, `:=`(
-    date = as.Date(date)
-)]
-
-# LOAD GAS CONS
-d.consumption = fread(file.path(g$d$o, 'consumption-gas-aggm.csv'))[, .(
-    date = as.Date(date),
-    value = value
-)]
-
-# LOAD HOLIDAYS
-d.holidays = fread(file.path(g$d$o, 'holidays.csv'))[, `:=`(
-    date = as.Date(date)
-    # holiday.name = ifelse(holiday.name == "", NA, holiday.name),
-    # vacation.name = ifelse(vacation.name == "", NA, vacation.name)
-)]
-
-# MERGE
-d.comb = merge(d.consumption, d.hdd, by = "date")
-d.comb = merge(d.comb, d.holidays, by = "date")
+# - CONF -----------------------------------------------------------------------
+update.data = FALSE
 
 
-d.economic.activity = read.economic.activity()
-# d.comb[, `:=`(
-#     temp = temp.vienna,
-#     hdd = hdd.vienna
-# )]
+# - LOAD -----------------------------------------------------------------------
+d.base = loadBase(update.data)
+d.economic.activity = loadFromStorage(id = "economic-activity")
+
 
 # AUGMENT
-d.comb[, `:=`(
-    t = as.integer(date - min(date)),
-    year = year(date),
-    day = yday(date),
-    week = week(date),
-    month = month(date),
-    wday = factor(
-        weekdays(date, abbreviate = TRUE),
-        c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
-    ),
+d.base[, `:=`(
     temp.15 = ifelse(temp < 15, 15 - temp, 0),
     temp.squared  = temp^2,
     temp.lag = shift(temp, 1),
@@ -54,10 +22,8 @@ d.comb[, `:=`(
     value.lag2 = shift(value, 2)
 )]
 
-d.comb[, `:=`(
+d.base[, `:=`(
     t.squared = t^2,
-    workday = ifelse(wday %in% c("Sat", "Sun"), wday, "Working day"),
-    week = str_pad(week, 2, pad = "0"),
     temp.15.squared = temp.15^2,
     temp.15.lag = shift(temp.15, 1),
     year_character = as.character(year),
@@ -65,10 +31,10 @@ d.comb[, `:=`(
     temp.f = cut(temp, seq(min(temp), max(temp), length = 10), all.inside = TRUE)
 )]
 
-train.years = c(2013:2020)
+train.years = c(2013:2021)
 
-d.train = d.comb[year %in% train.years]
-d.pred = copy(d.comb)
+d.train = d.base[year %in% train.years]
+d.pred = copy(d.base)
 
 m.linear = lm(
     value ~ t + t.squared +
@@ -110,8 +76,8 @@ ggplot(d.plot[year == "2021"], aes(x = date, y = value)) +
 
 
 d.month = d.pred[, .(
-    value = sum(value),
-    prediction = sum(prediction)
+    value = mean(value),
+    prediction = mean(prediction)
 ) , by = .(month, year)]
 
 d.month[, diff := prediction - value]

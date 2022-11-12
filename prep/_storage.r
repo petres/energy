@@ -27,8 +27,8 @@ saveToStorages = function(data, meta, storages = c("local", "googledrive")) {
 }
 
 loadFromStorage = function(id, format = 'csv', storage = "googledrive") {
-    format = 'csv'
-    id = "temperature-hdd"
+    # format = 'csv'
+    # id = "temperature-hdd"
     fileName = glue("{id}.{format}")
 
     if (format == 'csv') {

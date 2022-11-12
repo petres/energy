@@ -1,39 +1,20 @@
 # - INIT -----------------------------------------------------------------------
 rm(list = ls())
-source('_shared.r')
-source('calc/prediction-gas-consumption/_functions.r')
-loadPackages(stringr, tidyverse)
+source('calc/prediction-gas-consumption/_shared.r')
 
 
-# - DATA -----------------------------------------------------------------------
-# LOAD TEMP/HDD
-d.hdd = fread(file.path(g$d$o, 'temp-hdd.csv'))[, `:=`(
-    date = as.Date(date)
-)]
+# - CONF -----------------------------------------------------------------------
+update.data = FALSE
 
-# LOAD GAS CONS
-d.consumption = fread(file.path(g$d$o, 'consumption-gas-aggm.csv'))[, .(
-    date = as.Date(date),
-    value = value
-)]
 
-# LOAD HOLIDAYS
-d.holidays = fread(file.path(g$d$o, 'holidays.csv'))[, `:=`(
-    date = as.Date(date)
-    # holiday.name = ifelse(holiday.name == "", NA, holiday.name),
-    # vacation.name = ifelse(vacation.name == "", NA, vacation.name)
+# - LOAD -----------------------------------------------------------------------
+d.base = loadBase(update.data)
+d.economic.activity = loadFromStorage(id = "economic-activity")[, .(
+    year, month, econcomic.activity = value
 )]
 
 
-# MERGE
-d.comb = merge(d.consumption, d.hdd, by = "date")
-d.comb = merge(d.comb, d.holidays, by = "date")
-d.comb[, month := month(date)]
-d.comb[, year := year(date)]
-
-d.economic.activity = read.economic.activity()
-
-d.comb = merge(d.comb, d.economic.activity, by = c("year", "month"), all.x = TRUE)
+d.comb = merge(d.base, d.economic.activity, by = c("year", "month"), all.x = TRUE)
 
 rel.growth = growth.rate(d.economic.activity)
 
