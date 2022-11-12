@@ -51,8 +51,7 @@ d.plot[, value := NULL]
 dates2PlotDates(d.plot)
 # d.plot[]
 
-
 # - SAVE -----------------------------------------------------------------------
-fwrite(d.plot, file.path(g$d$wd, 'others', 'data-gas-oil.csv'))
+fwrite(d.plot, file.path(g$d$wd, 'others', 'gas-oil.csv'))
 
 
