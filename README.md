@@ -1,5 +1,7 @@
 # [Energy Monitor (energy.abteil.org)](https://energy.abteil.org)
 
+***Moved to https://github.com/energy-monitor/***
+
 Joint project by [Johannes Schmidt](https://github.com/joph) and me. Provides data loading and preparation scripts for the visualisations of essential energy data series for Austria.
 
 ## Data sources
