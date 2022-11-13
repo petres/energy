@@ -10,7 +10,7 @@ update.data = FALSE
 # - LOAD -----------------------------------------------------------------------
 d.base = loadBase(update.data)
 d.economic.activity = loadFromStorage(id = "economic-activity")[, .(
-    year, month, econcomic.activity = value
+    year, month, economic.activity = value
 )]
 
 

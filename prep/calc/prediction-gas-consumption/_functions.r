@@ -56,13 +56,13 @@ loadBase = function(update) {
 ### compared to last year
 growth.rate = function(d.economic.activity){
 
-    maximum.month.last.year = d.economic.activity %>%
+    maximum.month.last.year = as_tibble(d.economic.activity) %>%
         filter(year==max(year)) %>%
         filter(month==max(month)) %>%
         dplyr::select(month) %>%
         unlist()
 
-    d.economic.activity %>%
+    as_tibble(d.economic.activity) %>%
         filter(year >= max(year) -1) %>%
         filter(month <= maximum.month.last.year) %>%
         group_by(year) %>%
